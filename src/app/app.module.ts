@@ -11,6 +11,9 @@ import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatIconModule} from '@angular/material/icon';
 import { EquipmentService } from './services/equipment.service';
 import { VendorService } from './services/vendor.service';
+import { RentalService } from './services/rental.service';
+import { JobService } from './services/job.service';
+import { InvoiceService } from './services/invoice.service';
 
 @NgModule({
   declarations: [
@@ -26,7 +29,7 @@ import { VendorService } from './services/vendor.service';
     MatSidenavModule,
     MatIconModule,
   ],
-  providers: [EquipmentService, VendorService],
+  providers: [EquipmentService, VendorService, RentalService, JobService, InvoiceService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

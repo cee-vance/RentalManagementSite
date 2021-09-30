@@ -9,6 +9,7 @@ import { FormsModule } from '@angular/forms';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatIconModule} from '@angular/material/icon';
+import { EquipmentService } from './services/equipment.service';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,7 @@ import {MatIconModule} from '@angular/material/icon';
     MatSidenavModule,
     MatIconModule,
   ],
-  providers: [],
+  providers: [EquipmentService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

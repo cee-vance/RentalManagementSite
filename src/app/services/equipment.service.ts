@@ -43,6 +43,12 @@ export class EquipmentService {
       return this.http.delete<Equipment[]>(this._url + id).pipe(catchError(HttpErrorHandler.errorHandler));
    }
 
+   // Create a new Equipment record
+   // Only admins can create equipment so needs Authentication, Authorization
+   createEquipment(equipment:Equipment): Observable<Equipment>{
+     return this.http.post<Equipment>(this._url, equipment).pipe(catchError(HttpErrorHandler.errorHandler));
+   }
+
 
 
 

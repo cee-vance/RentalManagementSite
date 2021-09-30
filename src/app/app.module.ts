@@ -10,6 +10,7 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatIconModule} from '@angular/material/icon';
 import { EquipmentService } from './services/equipment.service';
+import { VendorService } from './services/vendor.service';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,7 @@ import { EquipmentService } from './services/equipment.service';
     MatSidenavModule,
     MatIconModule,
   ],
-  providers: [EquipmentService],
+  providers: [EquipmentService, VendorService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

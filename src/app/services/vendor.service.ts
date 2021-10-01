@@ -18,7 +18,7 @@ export class VendorService {
     */
 
     // Will probably change
-    private _url: string = 'localhost:8000/vendors/';
+    private _url: string = 'http://localhost:8000/api/Vendor';
    constructor(private http: HttpClient) { }
 
   // Gets all vendors

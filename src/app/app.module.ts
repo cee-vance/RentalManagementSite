@@ -18,12 +18,18 @@ import { JobListComponent } from './Job/job-list/job-list.component';
 import {MatTableModule} from '@angular/material/table';
 import { HttpClientModule } from '@angular/common/http';
 import { InvoiceListComponent } from './invoice/invoice-list/invoice-list.component';
+import { EquipmentListComponent } from './equipment/equipment-list/equipment-list.component';
+import { RentalListComponent } from './rental/rental-list/rental-list.component';
+import { VendorListComponent } from './vendor/vendor-list/vendor-list.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     JobListComponent,
-    InvoiceListComponent
+    InvoiceListComponent,
+    EquipmentListComponent,
+    RentalListComponent,
+    VendorListComponent
   ],
   imports: [
     BrowserModule,

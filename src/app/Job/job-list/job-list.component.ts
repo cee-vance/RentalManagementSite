@@ -12,7 +12,7 @@ export class JobListComponent implements OnInit {
   constructor(private job_srvc: JobService) { }
   jobs: any;
   errorMsg: any;
-  displayedColumns: string[] = ['id', 'needed_from', 'needed_to'];
+  displayedColumns: string[] = ['id', 'name','needed_from', 'needed_to', 'rentals'];
   ngOnInit(): void {  
     this.job_srvc.getJobs().subscribe(
       (data) => this.jobs = data,

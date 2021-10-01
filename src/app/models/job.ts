@@ -4,8 +4,10 @@ export interface Job {
     can have many different Rentals for each Job
     */
     id:number;
+    name:string;
     needed_from: string;
     needed_to: string;
+    rentals:any;
     /*
         TO DO:
         ADD FIELD FOR LIST OF RENTALS ASSOCIATED WITH JOB !!!!

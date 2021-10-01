@@ -19,7 +19,7 @@ export class RentalService {
     */
 
     // Will probably change
-    private _url: string = 'localhost:8000/rentals/';
+    private _url: string = 'http://localhost:8000/api/Rental';
    constructor(private http: HttpClient) { }
 
   // Gets all rentals

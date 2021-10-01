@@ -20,7 +20,7 @@ export class JobService {
     */
 
     // Will probably change
-    private _url: string = 'http://localhost:8000/invoicejob/jobs/';
+    private _url: string = 'http://localhost:8000/jobs/';
    constructor(private http: HttpClient) { }
 
   // Gets all jobs
@@ -50,7 +50,7 @@ export class JobService {
     deleteJob(id:number){
       return this.http.delete(this._url + id).pipe(catchError(HttpErrorHandler.errorHandler));
     }
-
+      
     // Create job record
     // returns an array of all the vendors
         // Needs Authorization ( Admins only)

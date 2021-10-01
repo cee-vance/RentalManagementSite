@@ -15,7 +15,7 @@ export class EquipmentService {
     !!!!!!!!!!! TO DO: !!!!!!!!!!!!!!!!!!
     implement frontend Authorization,  See AuthService
   */
-  private _url: string = "http://localhost:8000/equipment/";
+  private _url: string = "http://localhost:8000/api/Equipment";
   constructor(private http: HttpClient) {
 
    }

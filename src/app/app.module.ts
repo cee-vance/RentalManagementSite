@@ -14,10 +14,16 @@ import { VendorService } from './services/vendor.service';
 import { RentalService } from './services/rental.service';
 import { JobService } from './services/job.service';
 import { InvoiceService } from './services/invoice.service';
+import { JobListComponent } from './Job/job-list/job-list.component';
+import {MatTableModule} from '@angular/material/table';
+import { HttpClientModule } from '@angular/common/http';
+import { InvoiceListComponent } from './invoice/invoice-list/invoice-list.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    JobListComponent,
+    InvoiceListComponent
   ],
   imports: [
     BrowserModule,
@@ -28,6 +34,8 @@ import { InvoiceService } from './services/invoice.service';
     MatToolbarModule,
     MatSidenavModule,
     MatIconModule,
+    MatTableModule,
+    HttpClientModule,
   ],
   providers: [EquipmentService, VendorService, RentalService, JobService, InvoiceService],
   bootstrap: [AppComponent]

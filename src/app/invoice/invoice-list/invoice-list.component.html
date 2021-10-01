@@ -1,0 +1,42 @@
+<table mat-table [dataSource]="invoices" class="mat-elevation-z8" style='width:100%'>
+
+    <!--- Note that these columns can be defined in any order.
+          The actual rendered columns are set as a property on the row definition" -->
+  
+    <!-- invoice id Column -->
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef> id </th>
+      <td mat-cell *matCellDef="let invoice"> {{invoice.id}} </td>
+    </ng-container>
+    
+    <!-- The date of the invoice -->
+    <ng-container matColumnDef="invoice_date">
+      <th mat-header-cell *matHeaderCellDef> Invoice Date </th>
+      <td mat-cell *matCellDef="let invoice"> {{invoice.invoice_date}} </td>
+    </ng-container>
+  
+    <!-- Rental Period Column -->
+    <ng-container matColumnDef="rental_period">
+      <th mat-header-cell *matHeaderCellDef>Rental Period</th>
+      <td mat-cell *matCellDef="let invoice"> {{invoice.rental_period}} </td>
+    </ng-container>
+  
+    <!-- INvoice Amount Column -->
+    <ng-container matColumnDef="invoice_amount">
+      <th mat-header-cell *matHeaderCellDef> Invoice Amount </th>
+      <td mat-cell *matCellDef="let invoice"> {{invoice.invoice_amount}} </td>
+    </ng-container>
+
+      
+    <!-- Job id Column -->
+    <ng-container matColumnDef="job_id">
+        <th mat-header-cell *matHeaderCellDef>Job id </th>
+        <td mat-cell *matCellDef="let invoice"> {{invoice.job}} </td>
+      </ng-container>
+
+    
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+  
+

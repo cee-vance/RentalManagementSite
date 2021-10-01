@@ -20,7 +20,7 @@ export class InvoiceService {
     */
 
     // Will probably change
-    private _url: string = 'localhost:8000/invoices/';
+    private _url: string = 'http://localhost:8000/invoicejob/invoices/';
    constructor(private http: HttpClient) { }
 
   // Gets all invoices

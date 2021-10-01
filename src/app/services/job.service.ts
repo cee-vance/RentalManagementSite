@@ -20,7 +20,7 @@ export class JobService {
     */
 
     // Will probably change
-    private _url: string = 'localhost:8000/jobs/';
+    private _url: string = 'http://localhost:8000/invoicejob/jobs/';
    constructor(private http: HttpClient) { }
 
   // Gets all jobs

@@ -9,4 +9,5 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title = 'RentalManagementSite';
   opened: boolean = false;
+  menu_select:number = 0;
 }

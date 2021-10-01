@@ -6,5 +6,9 @@ export interface Job {
     id:number;
     needed_from: string;
     needed_to: string;
-    PO: number;
+    /*
+        TO DO:
+        ADD FIELD FOR LIST OF RENTALS ASSOCIATED WITH JOB !!!!
+    */
+  //  PO: number;
 }

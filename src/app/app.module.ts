@@ -21,6 +21,13 @@ import { InvoiceListComponent } from './invoice/invoice-list/invoice-list.compon
 import { EquipmentListComponent } from './equipment/equipment-list/equipment-list.component';
 import { RentalListComponent } from './rental/rental-list/rental-list.component';
 import { VendorListComponent } from './vendor/vendor-list/vendor-list.component';
+import { EquipmentAddComponent } from './equipment/equipment-add/equipment-add.component';
+import { JobAddComponent } from './job/job-add/job-add.component';
+import {MatListModule} from '@angular/material/list';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatInputModule} from '@angular/material/input'
+import { MatNativeDateModule } from     '@angular/material/core';
 
 @NgModule({
   declarations: [
@@ -29,7 +36,9 @@ import { VendorListComponent } from './vendor/vendor-list/vendor-list.component'
     InvoiceListComponent,
     EquipmentListComponent,
     RentalListComponent,
-    VendorListComponent
+    VendorListComponent,
+    EquipmentAddComponent,
+    JobAddComponent
   ],
   imports: [
     BrowserModule,
@@ -42,6 +51,11 @@ import { VendorListComponent } from './vendor/vendor-list/vendor-list.component'
     MatIconModule,
     MatTableModule,
     HttpClientModule,
+    MatListModule,
+    MatDatepickerModule,
+    MatFormFieldModule,
+    MatNativeDateModule,
+    MatInputModule,
   ],
   providers: [EquipmentService, VendorService, RentalService, JobService, InvoiceService],
   bootstrap: [AppComponent]

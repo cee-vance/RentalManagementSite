@@ -1,13 +1,15 @@
-export interface Job {
+import {Rental} from './rental'
+
+export class Job {
     /*
     represents a Construction Job that lasts from - to date, 
     can have many different Rentals for each Job
     */
-    id:number;
-    name:string;
-    needed_from: string;
-    needed_to: string;
-    rentals:any;
+   public id:any = '';
+   public name:string = '';
+    public  needed_from: string = '';
+   public needed_to: string = '';
+   public rentals:any = [];
     /*
         TO DO:
         ADD FIELD FOR LIST OF RENTALS ASSOCIATED WITH JOB !!!!

@@ -7,6 +7,7 @@ export class HttpErrorHandler {
 
          // Error handler for HTTP Methods
        static  errorHandler(error:HttpErrorResponse){
+            console.log('Error:' + error.message);
             return throwError(error.message || "Server Error");
           }
 }

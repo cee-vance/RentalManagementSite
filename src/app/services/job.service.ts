@@ -21,6 +21,7 @@ export class JobService {
 
     // Will probably change
     private _url: string = 'http://localhost:8000/jobs/';
+    private _url_add: string = 'http://localhost:8000/job/create/'
    constructor(private http: HttpClient) { }
 
   // Gets all jobs
@@ -56,8 +57,10 @@ export class JobService {
         // Needs Authorization ( Admins only)
     // Needs Authentication ( Logged in Admins)
     createJob(job:Job):Observable<Job[]>{
-      return this.http.post<Job[]>(this._url, job).pipe(catchError(HttpErrorHandler.errorHandler));
-
+      console.log('calling create job');
+      console.log(job.name + job.needed_from + job.needed_to);
+      return this.http.post<Job[]>(this._url_add, job).pipe(catchError(HttpErrorHandler.errorHandler));
+      
     }
 
 }

@@ -32,6 +32,14 @@ import { InvoiceAddComponent } from './invoice/invoice-add/invoice-add.component
 import { RentalAddComponent } from './rental/rental-add/rental-add.component';
 import { VendorAddComponent } from './vendor/vendor-add/vendor-add.component';
 import { FormControl } from '@angular/forms';
+import { RouterModule } from '@angular/router';
+import { VendorEditComponent } from './vendor/vendor-edit/vendor-edit.component';
+import { EquipmentEditComponent } from './equipment/equipment-edit/equipment-edit.component';
+import { RentalEditComponent } from './rental/rental-edit/rental-edit.component';
+import { JobEditComponent } from './job/job-edit/job-edit.component';
+import { InvoiceEditComponent } from './invoice/invoice-edit/invoice-edit.component';
+
+
 
 @NgModule({
   declarations: [
@@ -45,7 +53,12 @@ import { FormControl } from '@angular/forms';
     JobAddComponent,
     InvoiceAddComponent,
     RentalAddComponent,
-    VendorAddComponent
+    VendorAddComponent,
+    VendorEditComponent,
+    EquipmentEditComponent,
+    RentalEditComponent,
+    JobEditComponent,
+    InvoiceEditComponent
   ],
   imports: [
     BrowserModule,
@@ -63,6 +76,7 @@ import { FormControl } from '@angular/forms';
     MatFormFieldModule,
     MatNativeDateModule,
     MatInputModule,
+   AppRoutingModule,
   
   ],
   providers: [EquipmentService, VendorService, RentalService, JobService, InvoiceService],

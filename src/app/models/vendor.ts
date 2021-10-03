@@ -1,9 +1,10 @@
-export interface Vendor {
+export class Vendor {
     /*
     Represents a Vendor , someone / company that rents or sells Equipment
     */
-    id:number;
-    sales_person:string;
-    address: string;
-    email: string;
+    public id:any = '';
+    public sales_person:string = '';
+    public address: string = '';
+    public email: string = '';
+
 }

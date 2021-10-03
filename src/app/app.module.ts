@@ -30,6 +30,8 @@ import {MatInputModule} from '@angular/material/input'
 import { MatNativeDateModule } from     '@angular/material/core';
 import { InvoiceAddComponent } from './invoice/invoice-add/invoice-add.component';
 import { RentalAddComponent } from './rental/rental-add/rental-add.component';
+import { VendorAddComponent } from './vendor/vendor-add/vendor-add.component';
+import { FormControl } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -42,7 +44,8 @@ import { RentalAddComponent } from './rental/rental-add/rental-add.component';
     EquipmentAddComponent,
     JobAddComponent,
     InvoiceAddComponent,
-    RentalAddComponent
+    RentalAddComponent,
+    VendorAddComponent
   ],
   imports: [
     BrowserModule,
@@ -60,6 +63,7 @@ import { RentalAddComponent } from './rental/rental-add/rental-add.component';
     MatFormFieldModule,
     MatNativeDateModule,
     MatInputModule,
+  
   ],
   providers: [EquipmentService, VendorService, RentalService, JobService, InvoiceService],
   bootstrap: [AppComponent]

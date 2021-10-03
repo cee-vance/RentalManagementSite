@@ -1,12 +1,14 @@
-export interface Invoice {
+import { Job } from "./job";
+
+export class Invoice {
     /*
         An invoice for a specific job, includes the totals for all the equipment rented for 
         associated Job , also dates
     */
-    id: number;
+    public id: any = '';
     
-    invoice_date: string;
-    rental_period: string;
-    invoice_amount: number;
-    job:number;
+    public invoice_date: any = '';
+    public rental_period: any  = '';
+    public  invoice_amount: any = '';
+    public job:any = '';
 }

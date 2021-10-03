@@ -21,6 +21,7 @@ export class InvoiceService {
 
     // Will probably change
     private _url: string = 'http://localhost:8000/invoices/';
+    private _url_single: string = 'http://localhost:8000/invoice/';
    constructor(private http: HttpClient) { }
 
   // Gets all invoices
@@ -55,8 +56,8 @@ export class InvoiceService {
     // returns an array of all the invoices
         // Needs Authorization ( Admins only)
     // Needs Authentication ( Logged in Admins)
-    createInvoice(invoice:Invoice):Observable<Invoice[]>{
-      return this.http.post<Invoice[]>(this._url, invoice).pipe(catchError(HttpErrorHandler.errorHandler));
+    createInvoice(invoice:Invoice):Observable<Invoice>{
+      return this.http.post<Invoice>(this._url_single +'create/', invoice).pipe(catchError(HttpErrorHandler.errorHandler));
 
     }
 }

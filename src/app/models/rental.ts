@@ -1,14 +1,14 @@
-export interface Rental {
+export class Rental {
     /*
     Represents  a single piece of Equipment , Rented from a vendor 
     
     */
-    id: number;
-    equipment_id:number[];
-    vendor_id: number;
-    receive_time:string;
-    return_time: string;
+    public  id: any = '';
+    public equipment_id:any = '';
+    public vendor_id: any = '';
+    public receive_time:any = '';
+    public return_time: any = '';
     
-    rental_rate: number;
-    buy_rent: boolean;
+    public rental_rate: any = '';
+    public buy_rent: any = '';
 }

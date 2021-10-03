@@ -29,6 +29,7 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input'
 import { MatNativeDateModule } from     '@angular/material/core';
 import { InvoiceAddComponent } from './invoice/invoice-add/invoice-add.component';
+import { RentalAddComponent } from './rental/rental-add/rental-add.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import { InvoiceAddComponent } from './invoice/invoice-add/invoice-add.component
     VendorListComponent,
     EquipmentAddComponent,
     JobAddComponent,
-    InvoiceAddComponent
+    InvoiceAddComponent,
+    RentalAddComponent
   ],
   imports: [
     BrowserModule,

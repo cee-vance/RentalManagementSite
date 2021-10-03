@@ -53,8 +53,8 @@ export class VendorService {
     // returns an array of all the vendors
         // Needs Authorization ( Admins only)
     // Needs Authentication ( Logged in Admins)
-    createVendor(vendor:Vendor):Observable<Vendor[]>{
-      return this.http.post<Vendor[]>(this._url, vendor).pipe(catchError(HttpErrorHandler.errorHandler));
+    createVendor(vendor:Vendor):Observable<Vendor>{
+      return this.http.post<Vendor>(this._url, vendor).pipe(catchError(HttpErrorHandler.errorHandler));
 
     }
 

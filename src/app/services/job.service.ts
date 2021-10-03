@@ -22,6 +22,8 @@ export class JobService {
     // Will probably change
     private _url: string = 'http://localhost:8000/jobs/';
     private _url_add: string = 'http://localhost:8000/job/create/'
+    private _url_single: string = 'http://localhost:8000/job/'
+    
    constructor(private http: HttpClient) { }
 
   // Gets all jobs
@@ -34,15 +36,15 @@ export class JobService {
   // returns only the job with passed id
   // Only need Authentication i.e Users and admins can see all the vendors
   
-  getJobById(id:number): Observable<Job>{
-    return this.http.get<Job>(this._url+ id).pipe(catchError(HttpErrorHandler.errorHandler));
-    }
+  getJobById(id:number): Observable<Job[]>{
+    return this.http.get<Job[]>(this._url_single + id + '/').pipe(catchError(HttpErrorHandler.errorHandler));
+    } 
 
     // Update job with id, set to passed job object
     // Needs Authorization ( Admins only)
     // Needs Authentication ( Logged in Admins)
     updateJob(id:number, job:Job):Observable<Job>{
-      return this.http.put<Job>(this._url + id, job).pipe(catchError(HttpErrorHandler.errorHandler));
+      return this.http.put<Job>(this._url_single + id +'/', job).pipe(catchError(HttpErrorHandler.errorHandler));
     }
 
     // Delete job with id

@@ -1,0 +1,78 @@
+<h4>Add Rental</h4>
+<form #rentalForm="ngForm" (ngSubmit)="onSubmit(rentalForm)" novalidate>
+
+    {{ vendors | json}}
+    {{ equipments | json}}
+
+    Rental Info:
+    <div style='background-color:yellow'>
+        {{ rental | json}}</div>
+    Equipment ids:
+    
+
+   
+        <h5>Select Vendor:</h5>
+        <mat-selection-list name='selected_vendor' [multiple]="false" [(ngModel)]="rental.vendor_id"  >
+            
+            <mat-list-option *ngFor="let vendor of vendors;" [value]="vendor.id">
+                {{vendor.id}}  {{ vendor.sales_person}} {{vendor.email}}
+            </mat-list-option>
+        </mat-selection-list>
+
+        <h5>
+            Select Equipment(s):
+        </h5>
+        <mat-selection-list name='selected_equipments' [(ngModel)]="equipment_ids">
+            <mat-list-option *ngFor="let equipment of equipments;" [value]="equipment.id">
+                {{equipment.id}}  {{ equipment.category}}  {{equipment.make}}   {{ equipment.model}}
+            </mat-list-option>
+        </mat-selection-list>
+
+        <h5>
+            Receive Date:
+        </h5>
+        <div class="form-group">
+      
+            <!-- <input type="text" #needed_to="ngModel"  class="form-control" name="needed_to" [(ngModel)]="job.needed_to"
+             [class.is-invalid]="needed_to.invalid && needed_to.touched">  -->
+       
+             <mat-form-field appearance="fill" >
+               <mat-label>Receive Date</mat-label>
+               <input matInput [matDatepicker]="picker1" (dateChange)='picker1_changed($event)'>
+               <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+               <mat-datepicker #picker1></mat-datepicker>
+             
+             </mat-form-field>
+        
+           </div>
+
+           <h5>
+               Return Date:
+           </h5>
+           <div class="form-group">
+      
+            <!-- <input type="text" #needed_to="ngModel"  class="form-control" name="needed_to" [(ngModel)]="job.needed_to"
+             [class.is-invalid]="needed_to.invalid && needed_to.touched">  -->
+       
+             <mat-form-field appearance="fill" >
+               <mat-label>Return Date</mat-label>
+               <input matInput [matDatepicker]="picker2" (dateChange)='picker2_changed($event)'>
+               <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+               <mat-datepicker #picker2></mat-datepicker>
+             
+             </mat-form-field>
+        
+           </div>
+
+           <h5>
+               Rental Rate:
+           </h5>
+           
+           <input  type="text" [(ngModel)]='rental.rental_rate' (keypress)="keyPressNumbers($event)" name='total' id='total'/>
+           
+           <button class="btn btn-primary" type="submit">Submit Job</button> 
+        
+    </form>
+
+ 
+

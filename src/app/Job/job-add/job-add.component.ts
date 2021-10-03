@@ -11,8 +11,18 @@ import { RentalService } from 'src/app/services/rental.service';
   styleUrls: ['./job-add.component.css']
 })
 export class JobAddComponent implements OnInit {
+
+  /*
+    This is the Component for adding Job with REST api,
+    the user inputs the dates as date pickers , and uses
+    the list of Rentals to add to list of Rentals associated with 
+    the new job, at least one Rental is required.  
+    !!!! This component still needs Validation , required for the 2 dates and 
+    for requiring at least 1 Rental for the newly created job
+  */
   job:Job = new Job();
   jobs:any;
+  
   errorMsg:any;
   rentals: any;
   rental_ids:number[] = []
@@ -47,9 +57,9 @@ export class JobAddComponent implements OnInit {
 
   onSubmit(jobForm:any){
       this.job.rentals = this.rental_ids;
-      
+
     
-    
+
       console.log('Adding job');
       this.job_srvc.createJob(this.job).subscribe(
         (data) => {this.jobs = data;
@@ -62,6 +72,6 @@ export class JobAddComponent implements OnInit {
     )
     if(this.errorMsg)
           console.log(this.errorMsg);
-  }
+  } 
 
 }

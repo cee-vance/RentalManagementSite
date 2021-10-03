@@ -8,7 +8,7 @@ export class Equipment {
    public make: string= "";
    public model: string = "";
     public serial_no: string = "";
-
+    
 /*    constructor(  category:string, make:string, model:string,serial_no:string,id?:number){
         if(id)
             this.id = id;

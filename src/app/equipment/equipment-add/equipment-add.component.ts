@@ -20,9 +20,10 @@ export class EquipmentAddComponent implements OnInit {
 
  // id:any;
     equipment: Equipment = new Equipment();
+    errorMsg: any;
+    equipments:any;
 
-
-  constructor(private equipment_srvc: EquipmentService, private router: Router) { }
+  constructor(private equipment_srvc: EquipmentService) { }
   
 
   ngOnInit(): void {
@@ -31,11 +32,17 @@ export class EquipmentAddComponent implements OnInit {
 
   onSubmit(equipmentAddForm:any){
     // Submits the Equipment
-     
-    this.equipment_srvc.createEquipment(this.equipment);
+     console.log('category' + this.equipment.category);
+     console.log('make:' + this.equipment.make);
+     console.log('model:' + this.equipment.model);
+     console.log('serial_no:'+ this.equipment.serial_no);
+    this.equipment_srvc.createEquipment(this.equipment).subscribe(
+      (data)=> this.equipments = data,
+      (error) => this.errorMsg = error
+    );
 
-    // Reset the form after
-    this.equipment = new Equipment()
+    
+   
 
   } 
 

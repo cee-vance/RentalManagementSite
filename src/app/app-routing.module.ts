@@ -32,11 +32,7 @@ const routes: Routes = [
       {path:'Add', component:InvoiceAddComponent, outlet:'lower'},
    //   {path:'Edit/:id', outlet:'lower'}
     ]},
-      { path:'Job', component: JobListComponent, 
-        children: [
-          {path:'Add', component: JobAddComponent, outlet:'lower'},
-    //      {path:'Edit/:id', outlet:'lower'}
-        ]}
+      { path:'Job', component: JobListComponent}
 
 ];
 

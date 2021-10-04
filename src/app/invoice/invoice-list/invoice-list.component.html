@@ -40,4 +40,5 @@
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
   </table>
   
+  <app-invoice-add (notify)='updateList($event)'></app-invoice-add>
 

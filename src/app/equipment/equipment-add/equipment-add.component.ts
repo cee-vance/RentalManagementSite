@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { Equipment } from 'src/app/models/equipment';
 import { EquipmentService } from 'src/app/services/equipment.service';
@@ -22,7 +22,7 @@ export class EquipmentAddComponent implements OnInit {
     equipment: Equipment = new Equipment();
     errorMsg: any;
     equipments:any;
-
+    @Output() notify: EventEmitter<number> = new EventEmitter();
   constructor(private equipment_srvc: EquipmentService) { }
   
 
@@ -30,20 +30,27 @@ export class EquipmentAddComponent implements OnInit {
 
   }
 
-  onSubmit(equipmentAddForm:any){
+  async onSubmit(equipmentAddForm:any){
     // Submits the Equipment
      console.log('category' + this.equipment.category);
      console.log('make:' + this.equipment.make);
      console.log('model:' + this.equipment.model);
      console.log('serial_no:'+ this.equipment.serial_no);
     this.equipment_srvc.createEquipment(this.equipment).subscribe(
-      (data)=> this.equipments = data,
+      (data)=> this.equipment = data,
       (error) => this.errorMsg = error
     );
+    await this.delay(3000);
+    this.notify.emit(1);
 
-    
+  //  this.equipment = new Equipment();
    
 
   } 
+
+  private delay(ms: number)
+{
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
 
 }

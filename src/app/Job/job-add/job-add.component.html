@@ -43,7 +43,7 @@
 
 
     
-
+    Choose Rental(s):
     <mat-selection-list name='selected_rentals' [(ngModel)]="rental_ids">
         <mat-list-option *ngFor="let rental of rentals;" [value]="rental.id">
             {{rental.id}}  {{ rental.receive_date}}  {{rental.return_date}}   $ {{ rental.rental_rate}}
@@ -52,5 +52,5 @@
     
     
      <button class="btn btn-primary" [disabled]="jobForm.form.invalid" type="submit">Submit Job</button> 
-   <!-- <button mat-flat-button color="accent">Submit form</button> -->
-  </form>
+      <!-- <button mat-flat-button color="accent">Submit form</button> -->
+     </form>

@@ -17,8 +17,10 @@ export class AppComponent {
       console.log($event.index);
       let idx = $event.index;
 
-      if(idx==0)
-        console.log('Not implemented yet.');
+      if(idx==0){
+       // console.log('Not implemented yet.');
+          this.router.navigate(['/Invoice']);
+      }
       if(idx ==1)
         this.router.navigate(['/Rental']);
 

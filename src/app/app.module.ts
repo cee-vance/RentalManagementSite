@@ -38,6 +38,7 @@ import { EquipmentEditComponent } from './equipment/equipment-edit/equipment-edi
 import { RentalEditComponent } from './rental/rental-edit/rental-edit.component';
 import { JobEditComponent } from './job/job-edit/job-edit.component';
 import { InvoiceEditComponent } from './invoice/invoice-edit/invoice-edit.component';
+import { LoginComponent } from './core/login/login.component';
 
 
 
@@ -59,6 +60,7 @@ import { InvoiceEditComponent } from './invoice/invoice-edit/invoice-edit.compon
     RentalEditComponent,
     JobEditComponent,
     InvoiceEditComponent,
+    LoginComponent,
     
   ],
   imports: [

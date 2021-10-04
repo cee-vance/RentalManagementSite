@@ -26,6 +26,18 @@ export class EquipmentListComponent implements OnInit {
     }
 
 
+    // Updates the list after Admin adds an Equipment
+    updateList(n:any){
+   
+      this.equipment_srvc.getEquipment().subscribe(
+        (data) => this.equipments = data,
+        (error) => this.errorMsg = error
+      ) 
+
+      console.log('in update equipment list');
+      console.log('errorMsg:' + this.errorMsg);
+
+    }
 
 
 }

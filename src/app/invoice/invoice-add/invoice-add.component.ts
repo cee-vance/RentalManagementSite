@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { Invoice } from 'src/app/models/invoice';
 import { Job } from 'src/app/models/job';
 import { InvoiceService } from 'src/app/services/invoice.service';
@@ -26,7 +26,7 @@ export class InvoiceAddComponent implements OnInit {
     invoice = new Invoice();
     selected_job:any;
     invoices:any;
-
+    @Output() notify: EventEmitter<number> = new EventEmitter();
   constructor(private invoice_srvc: InvoiceService, private job_srvc: JobService, private rental_srvc: RentalService) { }
 
   ngOnInit(): void {
@@ -38,7 +38,7 @@ export class InvoiceAddComponent implements OnInit {
 
 
 
-      onSubmit(invoiceForm:any){
+     async onSubmit(invoiceForm:any){
           
 
             
@@ -56,6 +56,10 @@ export class InvoiceAddComponent implements OnInit {
 
             )
 
+           await this.delay(3000);
+
+           this.notify.emit(1);
+
       }
 
         // Only Integer Numbers
@@ -70,6 +74,11 @@ export class InvoiceAddComponent implements OnInit {
     }
   }
 
+
+  private delay(ms: number)
+  {
+    return new Promise(resolve => setTimeout(resolve, ms));
+  }
   }
 
 

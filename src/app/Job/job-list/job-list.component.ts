@@ -21,4 +21,13 @@ export class JobListComponent implements OnInit {
 
   }
 
+  updateList(n:any){
+    this.job_srvc.getJobs().subscribe(
+      (data) => this.jobs = data,
+      (error) => this.errorMsg = error
+    ) 
+
+    console.log('updated Jobs');
+  }
+
 }

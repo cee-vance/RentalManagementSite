@@ -3,9 +3,8 @@
 <form #invoiceForm="ngForm" (ngSubmit)="onSubmit(invoiceForm)" novalidate>
  
 
-        {{invoice | json}}
-        {{invoices | json}}
-      <h4>Select Job For Invoice:</h4>
+      
+      <h2>Select Job For Invoice:</h2>
     <mat-selection-list name='selected_job' [multiple]="false" [(ngModel)]="invoice.job"  >
         
         <mat-list-option *ngFor="let job of jobs;" [value]="job.id">

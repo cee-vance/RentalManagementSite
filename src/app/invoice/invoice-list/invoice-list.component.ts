@@ -25,4 +25,11 @@ export class InvoiceListComponent implements OnInit {
 
   }
 
+  updateList(n:any){
+    this.invoice_srvc.getInvoices().subscribe(
+      (data) => this.invoices = data,
+      (error) => this.errorMsg = error
+    ) 
+  }
+
 }

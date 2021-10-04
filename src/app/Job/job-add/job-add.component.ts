@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { JobService } from 'src/app/services/job.service';
 import { FormsModule } from '@angular/forms';
 import { Job } from 'src/app/models/job';
 import { RentalService } from 'src/app/services/rental.service';
+
 
 
 @Component({
@@ -28,6 +29,7 @@ export class JobAddComponent implements OnInit {
   rental_ids:number[] = []
   picker1:any;
   picker2:any;
+  @Output() notify: EventEmitter<number> = new EventEmitter();
   constructor(private job_srvc: JobService,private rental_srvc: RentalService) { }
 
   ngOnInit(): void {
@@ -55,7 +57,7 @@ export class JobAddComponent implements OnInit {
     this.job.needed_to = d.toLocaleDateString('en-ca');
   }
 
-  onSubmit(jobForm:any){
+ async onSubmit(jobForm:any){
       this.job.rentals = this.rental_ids;
 
     
@@ -70,8 +72,16 @@ export class JobAddComponent implements OnInit {
           },
       (error) => this.errorMsg = error
     )
+    await   this.delay(3000);
+    this.notify.emit(1);
     if(this.errorMsg)
           console.log(this.errorMsg);
   } 
+
+  
+  private delay(ms: number)
+{ 
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
 
 }

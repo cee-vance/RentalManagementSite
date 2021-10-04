@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { LoginComponent } from './core/login/login.component';
 import { EquipmentAddComponent } from './equipment/equipment-add/equipment-add.component';
 import { EquipmentListComponent } from './equipment/equipment-list/equipment-list.component';
 import { InvoiceAddComponent } from './invoice/invoice-add/invoice-add.component';
@@ -12,6 +13,7 @@ import { VendorAddComponent } from './vendor/vendor-add/vendor-add.component';
 import { VendorListComponent } from './vendor/vendor-list/vendor-list.component';
 
 const routes: Routes = [
+  {path: '', component: LoginComponent},
   {path:'Vendor',component: VendorListComponent,children: [
       {path:'Add', component: VendorAddComponent, outlet:'lower'},
   //    {path: 'Edit/:id', outlet:'lower' }

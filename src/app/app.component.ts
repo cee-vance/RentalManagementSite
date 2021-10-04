@@ -28,7 +28,7 @@ export class AppComponent {
         this.router.navigate(['/Vendor']);
 
       if(idx == 3)
-        console.log('Not implemented yet.');
+        this.router.navigate(['/Equipment']);
       
 
   }

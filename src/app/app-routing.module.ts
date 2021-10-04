@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './core/login/login.component';
 import { EquipmentAddComponent } from './equipment/equipment-add/equipment-add.component';
+import { EquipmentEditComponent } from './equipment/equipment-edit/equipment-edit.component';
 import { EquipmentListComponent } from './equipment/equipment-list/equipment-list.component';
 import { InvoiceAddComponent } from './invoice/invoice-add/invoice-add.component';
 import { InvoiceListComponent } from './invoice/invoice-list/invoice-list.component';
@@ -26,9 +27,10 @@ const routes: Routes = [
     ]},
     { path:'Equipment',component: EquipmentListComponent,
       children:[
-          {path: 'Add', component: EquipmentAddComponent, outlet:'lower'},
-      //    {path:'Edit/:id',  outlet:'lower'}
+        {path:'EquipmentEdit/:id', component: EquipmentEditComponent}
       ]},
+  
+     
       {path:'Invoice', component:InvoiceListComponent,
         children: [
       {path:'Add', component:InvoiceAddComponent, outlet:'lower'},

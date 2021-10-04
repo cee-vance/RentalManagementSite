@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Equipment } from 'src/app/models/equipment';
 import { EquipmentService } from 'src/app/services/equipment.service';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
@@ -14,9 +14,14 @@ export class EquipmentEditComponent implements OnInit {
   equipment: Equipment = new Equipment();
   errorMsg: any;
   equipments:any;
-  constructor(private equipment_srvc: EquipmentService) { }
+  constructor(private equipment_srvc: EquipmentService, private activeRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
+      this.equipment_srvc.getEquipmentById( this.activeRoute.snapshot.params['id']).subscribe(
+        (data) => this.equipment = data,
+        (error) => this.errorMsg = error
+      )
+
 
   }
   onSubmit(equipmentAddForm:any){

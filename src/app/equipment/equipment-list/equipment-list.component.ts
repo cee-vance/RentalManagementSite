@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { EquipmentService } from 'src/app/services/equipment.service';
 
 @Component({
@@ -12,10 +13,10 @@ export class EquipmentListComponent implements OnInit {
     This component uses the EquipmentService to get
     all the Invoices and display then in a tabular fashion
   */
-    constructor(private equipment_srvc: EquipmentService) { }
+    constructor(private equipment_srvc: EquipmentService, private router: Router) { }
     equipments: any;
     errorMsg: any;
-    displayedColumns: string[] = ['id', 'category', 'make', 'model', 'serial_no'];
+    displayedColumns: string[] = ['id', 'category', 'make', 'model', 'serial_no', 'edit'];
    
     ngOnInit(): void {  
       this.equipment_srvc.getEquipment().subscribe(
@@ -38,6 +39,12 @@ export class EquipmentListComponent implements OnInit {
       console.log('errorMsg:' + this.errorMsg);
 
     }
+
+      showEdit(id:number){
+      console.log('id:' + id);
+      this.router.navigate(['Equipment/EquipmentEdit/', id] );
+
+    } 
 
 
 }

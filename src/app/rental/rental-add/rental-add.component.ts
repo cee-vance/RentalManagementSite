@@ -1,8 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+
 import { Rental } from 'src/app/models/rental';
 import { EquipmentService } from 'src/app/services/equipment.service';
 import { RentalService } from 'src/app/services/rental.service';
 import { VendorService } from 'src/app/services/vendor.service';
+
 @Component({
   selector: 'app-rental-add',
   templateUrl: './rental-add.component.html',
@@ -20,8 +22,9 @@ export class RentalAddComponent implements OnInit {
   vendors:any;
   equipments:any;
   rental:Rental = new Rental();
-  errorMsg:any;
+  errorMsg:any = '';
   equipment_ids:number[] = [];
+  @Output() notify: EventEmitter<number> = new EventEmitter();
   constructor(private rental_srvc: RentalService, private equipment_srvc:EquipmentService, private vendor_srvc: VendorService) { }
 
   ngOnInit(): void {
@@ -76,9 +79,13 @@ export class RentalAddComponent implements OnInit {
           this.rental.buy_rent = true;
 
           this.rental_srvc.createRental(this.rental).subscribe(
-            (data) => this.rentals = data,
+            (data) => this.rental = data,
             (error) => this.errorMsg = error
           )
+          if(this.errorMsg == '')
+            this.notify.emit(1)
+          else
+            console.log('There was an error adding Rental')
 
       }
 

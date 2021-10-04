@@ -54,8 +54,8 @@ export class RentalService {
     // returns an array of all the rentals
         // Needs Authorization ( Admins only)
     // Needs Authentication ( Logged in Admins)
-    createRental(rental:Rental):Observable<Rental[]>{
-      return this.http.post<Rental[]>(this._url, rental).pipe(catchError(HttpErrorHandler.errorHandler));
+    createRental(rental:Rental):Observable<Rental>{
+      return this.http.post<Rental>(this._url, rental).pipe(catchError(HttpErrorHandler.errorHandler));
 
     }
 

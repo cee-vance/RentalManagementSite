@@ -23,4 +23,11 @@ export class RentalListComponent implements OnInit {
     ) 
 
   }
+
+  updateList(n:any){
+    this.rental_srvc.getRentals().subscribe(
+      (data) => this.rentals = data,
+      (error) => this.errorMsg = error
+    ) 
+  }
 }

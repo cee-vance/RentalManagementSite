@@ -1,32 +1,15 @@
 <h4>Add Rental</h4>
 <form #rentalForm="ngForm" (ngSubmit)="onSubmit(rentalForm)" novalidate>
 
-    {{ vendors | json}}
-    {{ equipments | json}}
 
     Rental Info:
-    <div style='background-color:yellow'>
-        {{ rental | json}}</div>
-    Equipment ids:
+  
     
 
    
-        <h5>Select Vendor:</h5>
-        <mat-selection-list name='selected_vendor' [multiple]="false" [(ngModel)]="rental.vendor_id"  >
-            
-            <mat-list-option *ngFor="let vendor of vendors;" [value]="vendor.id">
-                {{vendor.id}}  {{ vendor.sales_person}} {{vendor.email}}
-            </mat-list-option>
-        </mat-selection-list>
 
-        <h5>
-            Select Equipment(s):
-        </h5>
-        <mat-selection-list name='selected_equipments' [(ngModel)]="equipment_ids">
-            <mat-list-option *ngFor="let equipment of equipments;" [value]="equipment.id">
-                {{equipment.id}}  {{ equipment.category}}  {{equipment.make}}   {{ equipment.model}}
-            </mat-list-option>
-        </mat-selection-list>
+
+   
 
         <h5>
             Receive Date:
@@ -70,6 +53,27 @@
            
            <input  type="text" [(ngModel)]='rental.rental_rate' (keypress)="keyPressNumbers($event)" name='total' id='total'/>
            
+
+           <h5>
+            Select Equipment(s):
+        </h5>
+        <mat-selection-list name='selected_equipments' [(ngModel)]="equipment_ids" style='background-color: rgb(174, 185, 185);'>
+            <div *ngIf='equipments'>
+            <mat-list-option *ngFor="let equipment of equipments;" [value]="equipment.id">
+                {{equipment.id}}  {{ equipment.category}}  {{equipment.make}}   {{ equipment.model}}
+            </mat-list-option>
+        </div>
+        </mat-selection-list>
+
+        <h5>Select Vendor:</h5>
+        <mat-selection-list name='selected_vendor' [multiple]="false" [(ngModel)]="rental.vendor_id" style="background-color: rgb(165, 181, 182);" >
+            <div *ngIf='equipments'>
+            <mat-list-option *ngFor="let vendor of vendors;" [value]="vendor.id">
+                {{vendor.id}}  {{ vendor.sales_person}} {{vendor.email}}
+            </mat-list-option>
+        </div>
+        </mat-selection-list>
+
            <button class="btn btn-primary" type="submit">Submit Job</button> 
         
     </form>

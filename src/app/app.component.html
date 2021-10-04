@@ -6,22 +6,15 @@
   </div></span>
 </mat-toolbar>
 
-  <mat-tab-group color="primary" >
+  <mat-tab-group color="primary" (selectedTabChange)='menu($event)'>
     <mat-tab label="Settings">Settings </mat-tab>
-    <mat-tab label="Rental Management"><a routerLink='/Rental'>Rental Management</a> </mat-tab>
+    <mat-tab label="Rental Management"> </mat-tab>
     <mat-tab label="Vendors">Vendors</mat-tab>
     <mat-tab label="Reports">Reports</mat-tab>
   </mat-tab-group>
 
     <!-- Mat sidenav container -->
-    <mat-sidenav-container>
-      <mat-sidenav mode='over' [(opened)]='opened'>
-        Sidenav
-        <mat-sidenav-content >
-            
-        </mat-sidenav-content>
-      </mat-sidenav>
-    </mat-sidenav-container>
+
     
     
   

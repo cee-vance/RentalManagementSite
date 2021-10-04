@@ -58,7 +58,8 @@ import { InvoiceEditComponent } from './invoice/invoice-edit/invoice-edit.compon
     EquipmentEditComponent,
     RentalEditComponent,
     JobEditComponent,
-    InvoiceEditComponent
+    InvoiceEditComponent,
+    
   ],
   imports: [
     BrowserModule,

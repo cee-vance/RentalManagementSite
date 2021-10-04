@@ -24,4 +24,11 @@ export class VendorListComponent implements OnInit {
       ) 
         
     }
+
+    updateList(n:any){
+      this.vendor_srvc.getVendors().subscribe(
+        (data) => this.vendors = data,
+        (error) => this.errorMsg = error
+      ) 
+    }
 }

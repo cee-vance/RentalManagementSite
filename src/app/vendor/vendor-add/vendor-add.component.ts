@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,EventEmitter, Output } from '@angular/core';
 import { Vendor } from 'src/app/models/vendor';
 import { VendorService } from 'src/app/services/vendor.service';
+
 
 @Component({
   selector: 'app-vendor-add',
@@ -22,6 +23,7 @@ export class VendorAddComponent implements OnInit {
   vendor: Vendor = new Vendor();
   errorMsg:any;
   vendors:any;
+  @Output() notify: EventEmitter<number> = new EventEmitter();
   constructor(private vendor_srvc: VendorService) { }
 
   ngOnInit(): void {
@@ -35,6 +37,8 @@ export class VendorAddComponent implements OnInit {
       this.vendor.sales_person = '';
       this.vendor.address = '';
       this.vendor.email = '';
+
+      this.notify.emit(1);
   }
 
 }

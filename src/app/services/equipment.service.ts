@@ -27,20 +27,20 @@ export class EquipmentService {
    }
    // Get Specific Equipment by pk
    getEquipmentById( id:number) :Observable<Equipment>{
-      return this.http.get<Equipment>(this._url + id).pipe(catchError(HttpErrorHandler.errorHandler));
+      return this.http.get<Equipment>(this._url + "/"+id).pipe(catchError(HttpErrorHandler.errorHandler));
 
    }
 
    // Requires Authorization
    // Updates an Equipment 
    updateEquipment(id:number, equipment: Equipment): Observable<Equipment[]>{
-     return this.http.put<Equipment[]>(this._url + id, equipment).pipe(catchError(HttpErrorHandler.errorHandler));
+     return this.http.put<Equipment[]>(this._url + "/"+id, equipment).pipe(catchError(HttpErrorHandler.errorHandler));
    }
 
    // Requires Authorization
    // Delete an Equipment
    deleteEquipment(id: number): Observable<Equipment[]>{
-      return this.http.delete<Equipment[]>(this._url + id).pipe(catchError(HttpErrorHandler.errorHandler));
+      return this.http.delete<Equipment[]>(this._url + "/"+id).pipe(catchError(HttpErrorHandler.errorHandler));
    }
 
    // Create a new Equipment record

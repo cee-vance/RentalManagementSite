@@ -1,1 +1,39 @@
-<p>invoice-edit works!</p>
+
+<h4>Edit Invoice</h4>
+<form #invoiceForm="ngForm" (ngSubmit)="onSubmit(invoiceForm)" novalidate>
+ 
+
+      
+      <h2>Select Job For Invoice:</h2>
+    <mat-selection-list name='selected_job' [multiple]="false" [(ngModel)]="invoice.job"  >
+        
+        <mat-list-option *ngFor="let job of jobs;" [value]="job.id">
+            {{job.id}}  {{ job.name}} {{job.rentals}}
+        </mat-list-option>
+    </mat-selection-list>
+    
+    <label >Rental Period</label>
+    <input type="number" [(ngModel)]='invoice.rental_period'  id="rental_period" name="period"
+         min="0" max="11">
+         <label >Invoice Total</label>
+         <input  type="text" [(ngModel)]='invoice.invoice_amount' (keypress)="keyPressNumbers($event)" name='total' id='total'/>
+         <button class="btn btn-primary" type="submit">Edit</button> 
+      <p>
+       
+      </p>
+
+    </form>
+    <form #delete="ngForm" (ngSubmit)="onDelete(delete)" novalidate>
+      <div *ngIf="!invoice.id">Content to render when condition is true.>
+
+        <div class="form-group">
+            <label>id</label>
+            <input type="text" #id='ngModel' class="form-control" name="id" id='id' [(ngModel)]="invoice.id"
+            [class.is-invalid]="id.invalid && id.touched">
+            <div *ngIf="id.touched && id.errors">
+              <div class="alert alert-danger" *ngIf="id.errors.required">id is required</div>
+            </div>
+        </div>
+        </div>
+        <button >Delete</button>
+    </form>

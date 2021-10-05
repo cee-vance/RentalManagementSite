@@ -58,7 +58,7 @@
         <div class="form-group">
             <label>id</label>
             <input type="text" #id='ngModel' class="form-control" name="id" id='id' [(ngModel)]="equipment.id"
-            [class.is-invalid]="category.invalid && id.touched">
+            [class.is-invalid]="id.invalid && id.touched">
             <div *ngIf="id.touched && id.errors">
               <div class="alert alert-danger" *ngIf="id.errors.required">id is required</div>
             </div>

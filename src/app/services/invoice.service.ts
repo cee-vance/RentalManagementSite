@@ -35,21 +35,21 @@ export class InvoiceService {
   // Only need Authentication i.e Users and admins can see all the vendors
   
   getInvoiceById(id:number): Observable<Invoice>{
-    return this.http.get<Invoice>(this._url+ id).pipe(catchError(HttpErrorHandler.errorHandler));
+    return this.http.get<Invoice>(this._url+ id+'/').pipe(catchError(HttpErrorHandler.errorHandler));
     }
 
     // Update invoice with id, set to passed invoice object
     // Needs Authorization ( Admins only)
     // Needs Authentication ( Logged in Admins)
     updateInvoice(id:number, invoice:Invoice):Observable<Invoice>{
-      return this.http.put<Invoice>(this._url + id, invoice).pipe(catchError(HttpErrorHandler.errorHandler));
+      return this.http.put<Invoice>(this._url + id+'/', invoice).pipe(catchError(HttpErrorHandler.errorHandler));
     }
 
     // Delete invoice with id
     // Needs Authorization ( Admins only)
     // Needs Authentication ( Logged in Admins)
     deleteInvoice(id:number){
-      return this.http.delete(this._url + id).pipe(catchError(HttpErrorHandler.errorHandler));
+      return this.http.delete(this._url + id+'/').pipe(catchError(HttpErrorHandler.errorHandler));
     }
 
     // Create invoice record

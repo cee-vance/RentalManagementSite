@@ -1,13 +1,15 @@
 <h2>Edit Equipment</h2>
 <form #equipmentForm="ngForm" (ngSubmit)="onSubmit(equipmentForm)" novalidate>
+  <div *ngIf="!equipment.id">Content to render when condition is true.>
     <div class="form-group">
         <label>id</label>
         <input type="text" #id='ngModel' class="form-control" name="id" id='id' [(ngModel)]="equipment.id"
-        [class.is-invalid]="category.invalid && id.touched">
+        [class.is-invalid]="id.invalid && id.touched">
         <div *ngIf="id.touched && id.errors">
           <div class="alert alert-danger" *ngIf="id.errors.required">id is required</div>
         </div>
       </div>
+  </div>
     <div class="form-group">
       <label>Category</label>
       <input type="text" #category='ngModel' required minlength="3" class="form-control" name="category" id='category' [(ngModel)]="equipment.category"
@@ -51,6 +53,8 @@
     <button >Edit</button>
     </form>
     <form #delete="ngForm" (ngSubmit)="onDelete(delete)" novalidate>
+      <div *ngIf="!equipment.id">Content to render when condition is true.>
+
         <div class="form-group">
             <label>id</label>
             <input type="text" #id='ngModel' class="form-control" name="id" id='id' [(ngModel)]="equipment.id"
@@ -59,8 +63,8 @@
               <div class="alert alert-danger" *ngIf="id.errors.required">id is required</div>
             </div>
         </div>
+        </div>
         <button >Delete</button>
-
     </form>
 
 

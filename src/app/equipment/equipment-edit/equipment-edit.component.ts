@@ -14,16 +14,25 @@ export class EquipmentEditComponent implements OnInit {
   equipment: Equipment = new Equipment();
   errorMsg: any;
   equipments:any;
-  constructor(private equipment_srvc: EquipmentService, private activeRoute: ActivatedRoute) { }
+  constructor(private equipment_srvc: EquipmentService, private activeRoute: ActivatedRoute) { console.log("Run the constructor");
+  }
 
   ngOnInit(): void {
-      this.equipment_srvc.getEquipmentById( this.activeRoute.snapshot.params['id']).subscribe(
-        (data) => this.equipment = data,
-        (error) => this.errorMsg = error
-      )
+    console.log("Run the getId");
+    
+  this.getId()
 
 
   }
+  
+  getId(){
+
+  if(this.activeRoute.snapshot.params['id']){
+        this.equipment_srvc.getEquipmentById( this.activeRoute.snapshot.params['id']).subscribe(
+        (data) => this.equipment = data,
+        (error) => this.errorMsg = error
+      )}
+      }
   onSubmit(equipmentAddForm:any){
     console.log('id' + this.equipment.id);
     console.log('category' + this.equipment.category);

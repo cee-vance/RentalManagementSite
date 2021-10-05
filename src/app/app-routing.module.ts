@@ -7,8 +7,9 @@ import { EquipmentListComponent } from './equipment/equipment-list/equipment-lis
 import { InvoiceAddComponent } from './invoice/invoice-add/invoice-add.component';
 import { InvoiceEditComponent } from './invoice/invoice-edit/invoice-edit.component';
 import { InvoiceListComponent } from './invoice/invoice-list/invoice-list.component';
-//import { JobAddComponent } from './job/job-add/job-add.component';
 import { JobListComponent } from './Job/job-list/job-list.component';
+import { JobAddComponent } from './job/job-add/job-add.component';
+import { JobEditComponent } from './job/job-edit/job-edit.component';
 import { RentalAddComponent } from './rental/rental-add/rental-add.component';
 import { RentalEditComponent } from './rental/rental-edit/rental-edit.component';
 import { RentalListComponent } from './rental/rental-list/rental-list.component';
@@ -42,7 +43,11 @@ const routes: Routes = [
 
    //   {path:'Edit/:id', outlet:'lower'}
     ]},
-      { path:'Job', component: JobListComponent}
+      { path:'Job', component: JobListComponent,
+      children:[
+        {path:'Add',component:JobAddComponent,outlet:'lower'},
+        {path:'JobEdit/:id',component:JobEditComponent}
+      ]}
 
 ];
 

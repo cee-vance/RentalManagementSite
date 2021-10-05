@@ -16,7 +16,7 @@ import { JobService } from './services/job.service';
 import { InvoiceService } from './services/invoice.service';
 import { JobListComponent } from './Job/job-list/job-list.component';
 import {MatTableModule} from '@angular/material/table';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { InvoiceListComponent } from './invoice/invoice-list/invoice-list.component';
 import { EquipmentListComponent } from './equipment/equipment-list/equipment-list.component';
 import { RentalListComponent } from './rental/rental-list/rental-list.component';
@@ -39,6 +39,8 @@ import { RentalEditComponent } from './rental/rental-edit/rental-edit.component'
 import { JobEditComponent } from './job/job-edit/job-edit.component';
 import { InvoiceEditComponent } from './invoice/invoice-edit/invoice-edit.component';
 import { LoginComponent } from './core/login/login.component';
+import { AuthServiceComponent } from './services/auth-service/auth-service.component';
+import { AuthInterceptorService } from './services/auth-interceptor.service';
 
 
 
@@ -61,6 +63,7 @@ import { LoginComponent } from './core/login/login.component';
     JobEditComponent,
     InvoiceEditComponent,
     LoginComponent,
+    AuthServiceComponent,
     
   ],
   imports: [
@@ -82,7 +85,15 @@ import { LoginComponent } from './core/login/login.component';
    AppRoutingModule,
   
   ],
-  providers: [EquipmentService, VendorService, RentalService, JobService, InvoiceService],
+  providers: [EquipmentService, VendorService, RentalService, JobService, InvoiceService, {
+
+    provide: HTTP_INTERCEPTORS,
+    
+    useClass: AuthInterceptorService,
+    
+    multi: true
+    
+    },],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

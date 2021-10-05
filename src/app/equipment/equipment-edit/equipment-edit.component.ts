@@ -4,6 +4,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Equipment } from 'src/app/models/equipment';
 import { EquipmentService } from 'src/app/services/equipment.service';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
+
 
 @Component({
   selector: 'app-equipment-edit',

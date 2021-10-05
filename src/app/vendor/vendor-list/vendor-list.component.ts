@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { VendorService } from 'src/app/services/vendor.service';
-
+import { FormsModule } from '@angular/forms';
 @Component({
   selector: 'app-vendor-list',
   templateUrl: './vendor-list.component.html',

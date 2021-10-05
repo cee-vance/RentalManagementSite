@@ -1,4 +1,7 @@
+import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { AuthServiceService } from 'src/app/services/auth-service.service';
 
 @Component({
   selector: 'app-login',
@@ -9,13 +12,14 @@ export class LoginComponent implements OnInit {
 
   username:string = '';
   password:string = '';
-  constructor() { }
+  constructor(private router: Router, private auth_srvc: AuthServiceService) { }
 
   ngOnInit(): void {
   }
 
   onSubmit(loginForm:any){
-    console.log('Not implemented yet');
+    this.auth_srvc.login(this.username,this.password);
+    this.router.navigate(['/Rental']);
   }
 
 }

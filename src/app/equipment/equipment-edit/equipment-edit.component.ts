@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-
 import { ActivatedRoute, Router } from '@angular/router';
 import { Equipment } from 'src/app/models/equipment';
 import { EquipmentService } from 'src/app/services/equipment.service';
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-equipment-edit',
@@ -14,25 +12,20 @@ export class EquipmentEditComponent implements OnInit {
   equipment: Equipment = new Equipment();
   errorMsg: any;
   equipments:any;
-  constructor(private equipment_srvc: EquipmentService, private activeRoute: ActivatedRoute) { console.log("Run the constructor");
+  constructor(private equipment_srvc: EquipmentService, private activeRoute: ActivatedRoute,private router: Router) { console.log("Run the constructor");
   }
-
   ngOnInit(): void {
     console.log("Run the getId");
-    
-  this.getId()
-
-
+    this.getId()
   }
   
   getId(){
-
-  if(this.activeRoute.snapshot.params['id']){
-        this.equipment_srvc.getEquipmentById( this.activeRoute.snapshot.params['id']).subscribe(
+    if(this.activeRoute.snapshot.params['id']){
+      this.equipment_srvc.getEquipmentById( this.activeRoute.snapshot.params['id']).subscribe(
         (data) => this.equipment = data,
         (error) => this.errorMsg = error
       )}
-      }
+    }
   onSubmit(equipmentAddForm:any){
     console.log('id' + this.equipment.id);
     console.log('category' + this.equipment.category);
@@ -49,7 +42,7 @@ export class EquipmentEditComponent implements OnInit {
     this.equipment_srvc.deleteEquipment(this.equipment.id).subscribe(
       (data)=> this.equipments = data,
       (error) => this.errorMsg = error);
-
+    window.location.reload();
   };
 
 }

@@ -39,6 +39,7 @@ export class VendorAddComponent implements OnInit {
       this.vendor.email = '';
 
       this.notify.emit(1);
+      window.location.reload();
   }
 
 }

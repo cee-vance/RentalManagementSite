@@ -41,7 +41,7 @@ export class EquipmentListComponent implements OnInit {
 
     }
 
-      showEdit(id:number){
+    showEdit(id:number){
       console.log('id:' + id);
       this.url_ = "Equipment/EquipmentEdit/"+id.toString()
       console.log(this.url_);

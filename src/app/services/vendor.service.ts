@@ -32,21 +32,21 @@ export class VendorService {
   // Only need Authentication i.e Users and admins can see all the vendors
   
   getVendorById(id:number): Observable<Vendor>{
-    return this.http.get<Vendor>(this._url+ id).pipe(catchError(HttpErrorHandler.errorHandler));
+    return this.http.get<Vendor>(this._url+"/"+ id).pipe(catchError(HttpErrorHandler.errorHandler));
     }
 
     // Update vendor with id, set to passed vendor object
     // Needs Authorization ( Admins only)
     // Needs Authentication ( Logged in Admins)
     updateVendor(id:number, vendor:Vendor):Observable<Vendor>{
-      return this.http.put<Vendor>(this._url + id, vendor).pipe(catchError(HttpErrorHandler.errorHandler));
+      return this.http.put<Vendor>(this._url + "/"+id, vendor).pipe(catchError(HttpErrorHandler.errorHandler));
     }
 
     // Delete vendor with id
     // Needs Authorization ( Admins only)
     // Needs Authentication ( Logged in Admins)
     deleteVendor(id:number){
-      return this.http.delete(this._url + id).pipe(catchError(HttpErrorHandler.errorHandler));
+      return this.http.delete(this._url +"/"+ id).pipe(catchError(HttpErrorHandler.errorHandler));
     }
 
     // Create vendor record

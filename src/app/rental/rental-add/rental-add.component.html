@@ -60,7 +60,7 @@
         <mat-selection-list name='selected_equipments' [(ngModel)]="equipment_ids" style='background-color: rgb(174, 185, 185);'>
             <div *ngIf='equipments'>
             <mat-list-option *ngFor="let equipment of equipments;" [value]="equipment.id">
-                {{equipment.id}}  {{ equipment.category}}  {{equipment.make}}   {{ equipment.model}}
+                ID:{{equipment.id}}  Catagory:{{ equipment.category}}  Make:{{equipment.make}}   model:{{ equipment.model}}
             </mat-list-option>
         </div>
         </mat-selection-list>

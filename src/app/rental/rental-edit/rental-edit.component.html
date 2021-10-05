@@ -1,1 +1,95 @@
-<p>rental-edit works!</p>
+<h4>Edit Rental</h4>
+<form #rentalForm="ngForm" (ngSubmit)="onSubmit(rentalForm)" novalidate>
+
+    <div *ngIf="!rental.id">Content to render when condition is true
+
+        <div class="form-group">
+            <label>id</label>
+            <input type="text" #id='ngModel' class="form-control" name="id" id='id' [(ngModel)]="rental.id">
+
+        </div>
+        </div>
+    Rental Info:
+        <h5>
+            Receive Date:
+        </h5>
+        <div class="form-group">
+      
+            <!-- <input type="text" #needed_to="ngModel"  class="form-control" name="needed_to" [(ngModel)]="job.needed_to"
+             [class.is-invalid]="needed_to.invalid && needed_to.touched">  -->
+       
+             <mat-form-field appearance="fill" >
+               <mat-label>Receive Date</mat-label>
+               <input matInput [matDatepicker]="picker1" (dateChange)='picker1_changed($event)'>
+               <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+               <mat-datepicker #picker1></mat-datepicker>
+             
+             </mat-form-field>
+        
+           </div>
+
+           <h5>
+               Return Date:
+           </h5>
+           <div class="form-group">
+      
+            <!-- <input type="text" #needed_to="ngModel"  class="form-control" name="needed_to" [(ngModel)]="job.needed_to"
+             [class.is-invalid]="needed_to.invalid && needed_to.touched">  -->
+       
+             <mat-form-field appearance="fill" >
+               <mat-label>Return Date</mat-label>
+               <input matInput [matDatepicker]="picker2" (dateChange)='picker2_changed($event)'>
+               <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+               <mat-datepicker #picker2></mat-datepicker>
+             
+             </mat-form-field>
+        
+           </div>
+
+           <h5>
+               Rental Rate:
+           </h5>
+           
+           <input  type="text" [(ngModel)]='rental.rental_rate' (keypress)="keyPressNumbers($event)" name='total' id='total'/>
+           
+
+           <h5>
+            Select Equipment(s):
+        </h5>
+        <mat-selection-list name='selected_equipments' [(ngModel)]="equipment_ids" style='background-color: rgb(174, 185, 185);'>
+            <div *ngIf='equipments'>
+            <mat-list-option *ngFor="let equipment of equipments;" [value]="equipment.id">
+                ID:{{equipment.id}}  Catagory:{{ equipment.category}}  Make:{{equipment.make}}   model:{{ equipment.model}}
+            </mat-list-option>
+        </div>
+        </mat-selection-list>
+
+        <h5>Select Vendor:</h5>
+        <mat-selection-list name='selected_vendor' [multiple]="false" [(ngModel)]="rental.vendor_id" style="background-color: rgb(165, 181, 182);" >
+            <div *ngIf='equipments'>
+            <mat-list-option *ngFor="let vendor of vendors;" [value]="vendor.id">
+                {{vendor.id}}  {{ vendor.sales_person}} {{vendor.email}}
+            </mat-list-option>
+        </div>
+        </mat-selection-list>
+
+           <button class="btn btn-primary" type="submit">Submit Job</button> 
+        
+    </form>
+
+ 
+
+
+
+
+<form #delete="ngForm" (ngSubmit)="onDelete(delete)" novalidate>
+    <div *ngIf="!rental.id">Content to render when condition is true.>
+
+      <div class="form-group">
+          <label>id</label>
+          <input type="text" #id='ngModel' class="form-control" name="id" id='id' [(ngModel)]="rental.id">
+
+      </div>
+      </div>
+      <button >Delete</button>
+  </form>

@@ -16,6 +16,7 @@ export class EquipmentListComponent implements OnInit {
     constructor(private equipment_srvc: EquipmentService, private router: Router) { }
     equipments: any;
     errorMsg: any;
+    url_:any;
     displayedColumns: string[] = ['id', 'category', 'make', 'model', 'serial_no', 'edit'];
    
     ngOnInit(): void {  
@@ -40,9 +41,20 @@ export class EquipmentListComponent implements OnInit {
 
     }
 
-      showEdit(id:number){
+    showEdit(id:number){
       console.log('id:' + id);
+      this.url_ = "Equipment/EquipmentEdit/"+id.toString()
+      console.log(this.url_);
+      
+      //this.router.navigateByUrl(this.url_);
+
+      //this.router.navigate(['Equipment/EquipmentEdit/', id] );
+      console.log('finished pass id:' + id);
+
+
+      this.router.navigateByUrl('', {skipLocationChange:true}).then(() => {
       this.router.navigate(['Equipment/EquipmentEdit/', id] );
+        });
 
     } 
 

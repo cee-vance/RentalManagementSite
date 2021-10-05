@@ -51,7 +51,7 @@ export class JobService {
     // Needs Authorization ( Admins only)
     // Needs Authentication ( Logged in Admins)
     deleteJob(id:number){
-      return this.http.delete(this._url + id).pipe(catchError(HttpErrorHandler.errorHandler));
+      return this.http.delete(this._url + id+'/').pipe(catchError(HttpErrorHandler.errorHandler));
     }
       
     // Create job record

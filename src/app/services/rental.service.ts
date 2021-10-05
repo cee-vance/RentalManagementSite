@@ -33,21 +33,21 @@ export class RentalService {
   // Only need Authentication i.e Users and admins can see all the vendors
   
   getRentalById(id:number): Observable<Rental>{
-    return this.http.get<Rental>(this._url+ id).pipe(catchError(HttpErrorHandler.errorHandler));
+    return this.http.get<Rental>(this._url+'/'+ id).pipe(catchError(HttpErrorHandler.errorHandler));
     }
 
     // Update rental with id, set to passed rental object
     // Needs Authorization ( Admins only)
     // Needs Authentication ( Logged in Admins)
-    updateVendor(id:number, rental:Rental):Observable<Rental>{
-      return this.http.put<Rental>(this._url + id, rental).pipe(catchError(HttpErrorHandler.errorHandler));
+    updateRental(id:number, rental:Rental):Observable<Rental>{
+      return this.http.put<Rental>(this._url + '/'+id, rental).pipe(catchError(HttpErrorHandler.errorHandler));
     }
 
     // Delete rental with id
     // Needs Authorization ( Admins only)
     // Needs Authentication ( Logged in Admins)
     deleteRental(id:number){
-      return this.http.delete(this._url + id).pipe(catchError(HttpErrorHandler.errorHandler));
+      return this.http.delete(this._url + '/'+id).pipe(catchError(HttpErrorHandler.errorHandler));
     }
 
     // Create rental record

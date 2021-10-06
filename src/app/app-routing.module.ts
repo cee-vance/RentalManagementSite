@@ -16,34 +16,46 @@ import { RentalListComponent } from './rental/rental-list/rental-list.component'
 import { VendorAddComponent } from './vendor/vendor-add/vendor-add.component';
 import { VendorEditComponent } from './vendor/vendor-edit/vendor-edit.component';
 import { VendorListComponent } from './vendor/vendor-list/vendor-list.component';
+import { AuthGuard } from './services/auth-guard.guard';
+import { AdminAuthGuard } from './services/admin-auth.guard';
 
 const routes: Routes = [
+   // logged in is ok
   {path: '', component: LoginComponent},
-  {path:'Vendor',component: VendorListComponent,children: [
+  {path:'Vendor',component: VendorListComponent, canActivate:[AuthGuard],
+  canActivateChild:[AdminAuthGuard],
+  // must be admin
+  children: [
       {path:'Add', component: VendorAddComponent, outlet:'lower'},
       {path:'VendorEdit/:id',component:VendorEditComponent}
   ]},
-  
-  { path:'Rental', component: RentalListComponent, 
+  // logged in is ok
+  { path:'Rental', component: RentalListComponent, canActivate:[AuthGuard],
+  canActivateChild:[AdminAuthGuard],
+    // must be admin
     children:[ 
       {path:'Add', component: RentalAddComponent, outlet:'lower'},
       {path:'RentalEdit/:id',component:RentalEditComponent}
     ]},
-    { path:'Equipment',component: EquipmentListComponent,
+     // logged in is ok
+    { path:'Equipment',component: EquipmentListComponent, canActivate:[AuthGuard],
+    canActivateChild:[AdminAuthGuard],
       children:[
         {path:'Add',component:EquipmentAddComponent},
         {path:'EquipmentEdit/:id', component: EquipmentEditComponent}
       ]},
   
-     
-      {path:'Invoice', component:InvoiceListComponent,
+      // logged in is ok
+      {path:'Invoice', component:InvoiceListComponent, canActivate:[AuthGuard],
+      canActivateChild:[AdminAuthGuard],
         children: [
           {path:'Add', component:InvoiceAddComponent, outlet:'lower'},
           {path:'InvoiceEdit/:id',component:InvoiceEditComponent}
 
    //   {path:'Edit/:id', outlet:'lower'}
     ]},
-      { path:'Job', component: JobListComponent,
+      { path:'Job', component: JobListComponent, canActivate:[AuthGuard],
+      canActivateChild:[AdminAuthGuard],
       children:[
         {path:'Add',component:JobAddComponent,outlet:'lower'},
         {path:'JobEdit/:id',component:JobEditComponent}

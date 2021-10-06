@@ -39,8 +39,9 @@ import { RentalEditComponent } from './rental/rental-edit/rental-edit.component'
 import { JobEditComponent } from './job/job-edit/job-edit.component';
 import { InvoiceEditComponent } from './invoice/invoice-edit/invoice-edit.component';
 import { LoginComponent } from './core/login/login.component';
-import { AuthServiceComponent } from './services/auth-service/auth-service.component';
 import { AuthInterceptorService } from './services/auth-interceptor.service';
+import { AuthGuard } from './services/auth-guard.guard';
+import { AdminAuthGuard } from './services/admin-auth.guard';
 
 
 
@@ -63,7 +64,6 @@ import { AuthInterceptorService } from './services/auth-interceptor.service';
     JobEditComponent,
     InvoiceEditComponent,
     LoginComponent,
-    AuthServiceComponent,
     
   ],
   imports: [
@@ -85,15 +85,12 @@ import { AuthInterceptorService } from './services/auth-interceptor.service';
    AppRoutingModule,
   
   ],
-  providers: [EquipmentService, VendorService, RentalService, JobService, InvoiceService, {
-
-    provide: HTTP_INTERCEPTORS,
-    
-    useClass: AuthInterceptorService,
-    
-    multi: true
-    
-    },],
+  providers: [EquipmentService, VendorService, RentalService, JobService, InvoiceService, AuthGuard, AdminAuthGuard,
+          {
+            provide: HTTP_INTERCEPTORS,
+            useClass:AuthInterceptorService,
+            multi:true
+          }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

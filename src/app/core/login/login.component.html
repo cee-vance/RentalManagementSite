@@ -1,12 +1,15 @@
 <form #loginForm="ngForm" (ngSubmit)="onSubmit(loginForm)" novalidate>
-<table>
+{{ creds | json}}
+    <table>
     <tbody>
         <tr>
             <td>
                 Username:
             </td>
             <td>
-                <input type='text' id='username' [(ngModel)]='username'>
+                <!--    <input type="text" #serial_no='ngModel'  class="form-control" required minlength="5" name="serial_no" id='serial_no' [(ngModel)]="equipment.serial_no"
+      -->
+                <input type='text' #user='ngModel' name='user' id='user' [(ngModel)]='username'>
             </td>
         </tr>
 
@@ -15,7 +18,7 @@
                 Password:
             </td>
             <td>
-                <input type='password' id='password' [(ngModel)]='password'>
+                <input type='password' #pw='ngModel' name='pw' id='pw' [(ngModel)]='password'>
             </td>
         </tr>
         <tr>
@@ -28,5 +31,5 @@
         </tr>
     </tbody>
 </table>
-
+<div [innerHtml] = 'result'></div>
 </form>

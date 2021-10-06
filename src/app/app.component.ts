@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthServiceService } from './services/auth-service.service';
 
 
 @Component({
@@ -11,8 +12,13 @@ export class AppComponent {
   title = 'RentalManagementSite';
   opened: boolean = false;
   menu_select:number = 0;
+  loggedIn:boolean = false;
+  constructor(private router: Router, public auth_srvc: AuthServiceService){}
 
-  constructor(private router: Router){}
+  ngOnInit(){
+
+    this.auth_srvc.getIsLoggedIn().subscribe((data) => this.loggedIn = data);
+  }
   menu($event:any){
       console.log($event.index);
       let idx = $event.index;
@@ -31,5 +37,10 @@ export class AppComponent {
         this.router.navigate(['/Equipment']);
       
 
+  }
+
+  doLogout(){
+    this.auth_srvc.logout();
+    this.router.navigate(['']);
   }
 }

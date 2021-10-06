@@ -1,8 +1,7 @@
-import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthServiceService } from 'src/app/services/auth-service.service';
-
+import { FormsModule } from '@angular/forms';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -10,16 +9,34 @@ import { AuthServiceService } from 'src/app/services/auth-service.service';
 })
 export class LoginComponent implements OnInit {
 
-  username:string = '';
-  password:string = '';
-  constructor(private router: Router, private auth_srvc: AuthServiceService) { }
+   username:string = '';
+   password:string = '';
+  creds:any;
+  result: string = ''
+  constructor(private auth_srvc: AuthServiceService, private router: Router) { }
 
   ngOnInit(): void {
   }
 
-  onSubmit(loginForm:any){
-    this.auth_srvc.login(this.username,this.password);
-    this.router.navigate(['/Rental']);
+   onSubmit(loginForm:any){
+
+    //console.log(this.username);
+    // console.log(this.password);
+    if(this.auth_srvc.checkCreds(this.username, this.password) == false){
+      this.result == 'No user/password found';
+    }
+    
+    
+    // navigate away based on creds 
+    if (this.auth_srvc.isLoggedIn == true){
+
+        this.router.navigate(['/Rental']);
+    }   else{
+        this.result = 'not authorized';
+    }
+
+    // console.log('Not implemented yet');
   }
+
 
 }

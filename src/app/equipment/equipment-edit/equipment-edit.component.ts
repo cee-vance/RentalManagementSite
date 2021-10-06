@@ -2,12 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Equipment } from 'src/app/models/equipment';
 import { EquipmentService } from 'src/app/services/equipment.service';
-<<<<<<< HEAD
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-
-
-=======
->>>>>>> 988a69c3c85e248ca5f6274dfe77bb1b3a8cb06a
 
 @Component({
   selector: 'app-equipment-edit',

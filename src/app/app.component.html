@@ -1,6 +1,12 @@
 
 <mat-toolbar style='background-color:cornflowerblue;color:whitesmoke'>
-  <span><div style='float:left;'>Company Icon</div><div style='clear:left'><label style='float:right'>Login</label>
+  <span><div style='float:left;'>Company Icon</div><div style='clear:left'>
+    <div *ngIf='auth_srvc.isLoggedIn' >
+        <label>Logged in as: {{auth_srvc.username}}</label>
+        <button (click)='doLogout()'>Logout</button>
+    </div>
+
+   
     <mat-icon (click)='opened=!opened' >format_list_bulleted </mat-icon>
  
   </div></span>
@@ -12,7 +18,7 @@
     <mat-tab label="Vendors">Vendors</mat-tab>
     <mat-tab label="Reports">Reports</mat-tab>
   </mat-tab-group>
-  <app-invoice-list></app-invoice-list>  
+ 
 
 
 
@@ -21,6 +27,8 @@
 
     
     <!--
+
+      <app-invoice-list></app-invoice-list> 
       <app-equipment-add></app-equipment-add>
       <app-equipment-edit></app-equipment-edit>
       <app-equipment-list></app-equipment-list> 

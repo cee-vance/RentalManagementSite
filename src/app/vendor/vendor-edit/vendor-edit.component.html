@@ -8,7 +8,9 @@
         <div *ngIf="!vendor.id">Content to render when condition is true.
 
             <td>
-                  ID:
+              <label>
+                ID:
+              </label>
                 </td>
                 <td> 
                   <div class="form-group">  <input type="text" #sales_person='ngModel'class="form-control" name="id" id='id' [(ngModel)]="vendor.id">
@@ -17,7 +19,9 @@
             </td>
         </div>
             <td>
-              Sales Person:
+              <label>
+                Sales Person:
+              </label>
             </td>
             <td> 
               <div class="form-group">  <input type="text" #sales_person='ngModel' required minlength="3" class="form-control" name="sales_person" id='sales_person' [(ngModel)]="vendor.sales_person"
@@ -31,7 +35,9 @@
           </tr>
           <tr>
             <td>
-              Address:
+              <label>
+                Address:
+              </label>
             </td>
             <td>
               <div class="form-group">
@@ -47,7 +53,9 @@
           </tr>
           <tr>
             <td>
-              Email:
+              <label>              
+                Email:
+              </label>
             </td>
             <td>
               <div class="form-group">
@@ -61,21 +69,14 @@
               </div>
             </td>
           </tr>
-          <tr>
-            <td>
 
-            </td>
-            <td>
-              <button mat-flat-button color="accent">Edit</button>
-            </td>
-          </tr>
           
         </tbody>
       </table>
-    
+          <button id = "div1" mat-flat-button color="accent">Edit</button>
       </form>
 
-      <form #delete="ngForm" (ngSubmit)="onDelete(delete)" novalidate>
+      <form id="div2" #delete="ngForm" (ngSubmit)="onDelete(delete)" novalidate>
         <div *ngIf="!vendor.id">Content to render when condition is true.>
   
           <div class="form-group">
@@ -83,7 +84,7 @@
               <input type="text" #id='ngModel' class="form-control" name="id" id='id' [(ngModel)]="vendor.id">
 
           </div>
-          </div>
+        </div>
           <button >Delete</button>
       </form>
   

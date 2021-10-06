@@ -1,0 +1,45 @@
+table{
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  mat-tab-group {
+    border-bottom: solid 5px white;
+    
+
+  }
+  
+  
+  table th{
+    font-family: Apple Chancery, cursive;
+
+    position: relative;
+    width: 15%;
+    background-color: #7d7d7d;
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+    font-size:20px;
+  }
+
+  
+  table td{
+    font-family: Comic Sans MS, Comic Sans, cursive;
+
+    text-align: center;
+    background-color: #eee;
+    padding: 10px 0;
+    
+  }
+  button{
+    font-family: Comic Sans MS, Comic Sans, cursive;
+
+  }
+  
+h4{
+    margin:50px 10px 15px 20px;
+    height:30px;
+    font-family: Jazz LET, fantasy;
+    font-size: 40px;
+    font-weight: 700;
+}

@@ -1,5 +1,8 @@
 <h4>Equipment</h4>
+<button [routerLink]="'/Equipment/Add'"> Add</button>
+
 <table mat-table [dataSource]="equipments" class="mat-elevation-z8" style='width:100%'>
+  <tbody>
 
     <!--- Note that these columns can be defined in any order.
           The actual rendered columns are set as a property on the row definition" -->
@@ -42,6 +45,7 @@
     
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </tbody>
   </table>
   <router-outlet></router-outlet>
 <!--<app-equipment-add (notify)='updateList($event)'></app-equipment-add> -->

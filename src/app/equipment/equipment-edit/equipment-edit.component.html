@@ -1,6 +1,8 @@
 <h2>Edit Equipment</h2>
-<form #equipmentForm="ngForm" (ngSubmit)="onSubmit(equipmentForm)" novalidate>
+<form  #equipmentForm="ngForm" (ngSubmit)="onSubmit(equipmentForm)" novalidate>
+  <table>
   <div *ngIf="!equipment.id">Content to render when condition is true.>
+    <tr>
     <div class="form-group">
         <label>id</label>
         <input type="text" #id='ngModel' class="form-control" name="id" id='id' [(ngModel)]="equipment.id"
@@ -9,9 +11,14 @@
           <div class="alert alert-danger" *ngIf="id.errors.required">id is required</div>
         </div>
       </div>
+    </tr>
   </div>
-    <div class="form-group">
+  <tr>
+      <td>
       <label>Category</label>
+      </td>
+      <td>
+      <div class="form-group">
       <input type="text" #category='ngModel' required minlength="3" class="form-control" name="category" id='category' [(ngModel)]="equipment.category"
       [class.is-invalid]="category.invalid && category.touched">
       <div *ngIf="category.touched && category.errors">
@@ -19,9 +26,15 @@
         <div class="alert alert-danger" *ngIf="category.errors.minlength">Category should be at least 3 characters long</div>
       </div>
     </div>
-
-    <div class="form-group">
+    </td>
+</tr>
+<tr>
+      <td>
       <label>Make</label>
+      </td>
+      <td>
+      <div class="form-group">
+
       <input type="text" #make='ngModel' class="form-control" required minlength="3" name="make"  id="make" [(ngModel)]="equipment.make"
       [class.is-invalid]="make.invalid && make.touched">
       <div *ngIf="make.touched && make.errors">
@@ -30,8 +43,13 @@
       </div>
     </div>
 
+    </td>
+</tr>
+<tr>
+<td>      <label>Model</label>
+</td>
+<td>
     <div class="form-group">
-      <label>Model</label>
       <input type="text"  #model='ngModel' class="form-control" required minlength="5" name="model" [(ngModel)]="equipment.model"
       [class.is-invalid]="model.invalid && model.touched">
       <div *ngIf="model.touched && model.errors">
@@ -39,20 +57,26 @@
         <div class="alert alert-danger" *ngIf="model.errors.minlength">Model should be at least 5 characters long</div>
       </div>
     </div>
+</td>
+</tr>
+<tr>
+  <td>        <label>Serial No.</label>
+  </td>
 
-    <div class="form-group">
-        <label>Serial No.</label>
-        <input type="text" #serial_no='ngModel'  class="form-control" required minlength="5" name="serial_no" id='serial_no' [(ngModel)]="equipment.serial_no"
-        [class.is-invalid]="serial_no.invalid && serial_no.touched">
-        <div *ngIf="serial_no.touched && serial_no.errors">
-          <div class="alert alert-danger" *ngIf="serial_no.errors.required">Serial no. is required</div>
-          <div class="alert alert-danger" *ngIf="serial_no.errors.minlength">Serial no. should be at least 5 characters long</div>
-        </div>
-      </div>
+  <td><div class="form-group">
+    <input type="text" #serial_no='ngModel'  class="form-control" required minlength="5" name="serial_no" id='serial_no' [(ngModel)]="equipment.serial_no"
+    [class.is-invalid]="serial_no.invalid && serial_no.touched">
+    <div *ngIf="serial_no.touched && serial_no.errors">
+      <div class="alert alert-danger" *ngIf="serial_no.errors.required">Serial no. is required</div>
+      <div class="alert alert-danger" *ngIf="serial_no.errors.minlength">Serial no. should be at least 5 characters long</div>
+    </div>
+  </div></td>
+  </tr>
+    </table>
     <!-- <button class="btn btn-primary" [disabled]="empForm.form.invalid" type="submit">Submit form</button> -->
-    <button >Edit</button>
+    <button id = "div1">Edit</button>
     </form>
-    <form #delete="ngForm" (ngSubmit)="onDelete(delete)" novalidate>
+    <form id="div2" #delete="ngForm" (ngSubmit)="onDelete(delete)" novalidate>
       <div *ngIf="!equipment.id">Content to render when condition is true.>
 
         <div class="form-group">
@@ -66,6 +90,7 @@
         </div>
         <button >Delete</button>
     </form>
+
 
 
 

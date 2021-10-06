@@ -1,26 +1,38 @@
 
 <h4>Add Invoice</h4>
 <form #invoiceForm="ngForm" (ngSubmit)="onSubmit(invoiceForm)" novalidate>
- 
-
-      
-      <h2>Select Job For Invoice:</h2>
-    <mat-selection-list name='selected_job' [multiple]="false" [(ngModel)]="invoice.job"  >
-        
-        <mat-list-option *ngFor="let job of jobs;" [value]="job.id">
-            {{job.id}}  {{ job.name}} {{job.rentals}}
-        </mat-list-option>
-    </mat-selection-list>
-    
-    <label >Rental Period</label>
-    <input type="number" [(ngModel)]='invoice.rental_period'  id="rental_period" name="period"
-         min="0" max="11">
-
-         <label >Invoice Total</label>
-         <input  type="text" [(ngModel)]='invoice.invoice_amount' (keypress)="keyPressNumbers($event)" name='total' id='total'/>
-         <button class="btn btn-primary" type="submit">Submit Job</button> 
-      <p>
-       
-      </p>
-
+  <table>
+    <tbody>
+      <tr>
+        <td>
+          <h2>Select Job For Invoice:</h2>
+        </td>
+        <td>
+          <mat-selection-list name='selected_job' [multiple]="false" [(ngModel)]="invoice.job"  >
+              
+            <mat-list-option *ngFor="let job of jobs;" [value]="job.id">
+                {{job.id}}  {{ job.name}} {{job.rentals}}
+            </mat-list-option>
+        </mat-selection-list>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <label >Rental Period</label>
+        </td>
+        <td>
+          <input type="number" [(ngModel)]='invoice.rental_period'  id="rental_period" name="period" min="0" max="11">
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <label >Invoice Total</label>
+        </td>
+        <td>
+          <input  type="text" [(ngModel)]='invoice.invoice_amount' (keypress)="keyPressNumbers($event)" name='total' id='total'/>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <button class="btn btn-primary" type="submit">Submit Job</button>
     </form>

@@ -1,9 +1,33 @@
-.example-form {
-    min-width: 150px;
-    max-width: 500px;
-    width: 100%;
-  }
+
+table, th, td {
+  border: 3px solid black;
+}
+label{
+  font-family: Comic Sans MS, Comic Sans, cursive;
+  margin:20px 20px 20px 20px;
+
+  text-align: center;
   
-  .example-full-width {
-    width: 100%;
-  }
+}
+button{
+  font-family: Comic Sans MS, Comic Sans, cursive;
+
+}
+
+h2{
+  margin:50px 20px 15px 20px;
+  height:30px;
+  font-family: Jazz LET, fantasy;
+  font-size: 30px;
+  font-weight: 700;
+}
+div{
+  margin: auto;
+}
+#div1 {
+  float:left;
+}
+#div2{
+float: right;
+}
+

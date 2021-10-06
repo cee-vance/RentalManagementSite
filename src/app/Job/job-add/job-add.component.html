@@ -1,56 +1,83 @@
+<h2>Job Add</h2>
 <form #jobForm="ngForm" (ngSubmit)="onSubmit(jobForm)" novalidate>
-    <div class="form-group">
-      <label> Name</label>
-      <input type="text" #name="ngModel" required minlength="3" class="form-control" name="name" [(ngModel)]="job.name"
-      [class.is-invalid]="name.invalid && name.touched">
-      <div *ngIf="name.touched && name.errors">
-        <div class="alert alert-danger" *ngIf="name.errors.required">Name is required</div>
-        <div class="alert alert-danger" *ngIf="name.errors.minlength">Name should be at least 3 characters long</div>
-      </div>
-    </div>
-
-    <div class="form-group">
-    ,<!--  <label>Needed From</label>
-      <input type="text" #needed_from="ngModel" class="form-control" required minlength="3" name="needed_from" [(ngModel)]="job.needed_from"
-      [class.is-invalid]="needed_from.invalid && needed_from.touched">
-      <div *ngIf="needed_from.touched && needed_from.errors">
-        <div class="alert alert-danger" *ngIf="needed_from.errors.required">Needed from is required</div>
-        <div class="alert alert-danger" *ngIf="needed_from.errors.minlength">Needed from should be at least 3 characters long</div>
-      </div>    -->
-      <mat-form-field appearance="fill" >
-        <mat-label>Needed From</mat-label>
-        <input matInput [matDatepicker]="picker1" (dateChange)='picker1_changed($event)'>
-        <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
-        <mat-datepicker #picker1></mat-datepicker>
+  <table>
+    <tr>
+      <td>      
+        <label> Name</label>
+      </td>
+      <td>
+        <div class="form-group">
+          <input type="text" #name="ngModel" required minlength="3" class="form-control" name="name" [(ngModel)]="job.name"
+          [class.is-invalid]="name.invalid && name.touched">
+          <div *ngIf="name.touched && name.errors">
+            <div class="alert alert-danger" *ngIf="name.errors.required">Name is required</div>
+            <div class="alert alert-danger" *ngIf="name.errors.minlength">Name should be at least 3 characters long</div>
+          </div>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <label>Needed From</label>
+      </td>
+      <td>
+        <div class="form-group">
+          ,<!--  <label>Needed From</label>
+            <input type="text" #needed_from="ngModel" class="form-control" required minlength="3" name="needed_from" [(ngModel)]="job.needed_from"
+            [class.is-invalid]="needed_from.invalid && needed_from.touched">
+            <div *ngIf="needed_from.touched && needed_from.errors">
+              <div class="alert alert-danger" *ngIf="needed_from.errors.required">Needed from is required</div>
+              <div class="alert alert-danger" *ngIf="needed_from.errors.minlength">Needed from should be at least 3 characters long</div>
+            </div>    -->
+            <mat-form-field appearance="fill" >
+              <mat-label>Needed From</mat-label>
+              <input matInput [matDatepicker]="picker1" (dateChange)='picker1_changed($event)'>
+              <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+              <mat-datepicker #picker1></mat-datepicker>
+            
+            </mat-form-field>
+          </div>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <label>
+          Needed To
+        </label>
+      </td>
+      <td>
+        <div class="form-group">
       
-      </mat-form-field>
-    </div>
-
-    <div class="form-group">
+          <!-- <input type="text" #needed_to="ngModel"  class="form-control" name="needed_to" [(ngModel)]="job.needed_to"
+           [class.is-invalid]="needed_to.invalid && needed_to.touched">  -->
+     
+           <mat-form-field appearance="fill" >
+             <mat-label>Needed To</mat-label>
+             <input matInput [matDatepicker]="picker2" (dateChange)='picker2_changed($event)'>
+             <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+             <mat-datepicker #picker2></mat-datepicker>
+           
+           </mat-form-field>
       
-     <!-- <input type="text" #needed_to="ngModel"  class="form-control" name="needed_to" [(ngModel)]="job.needed_to"
-      [class.is-invalid]="needed_to.invalid && needed_to.touched">  -->
-
-      <mat-form-field appearance="fill" >
-        <mat-label>Needed To</mat-label>
-        <input matInput [matDatepicker]="picker2" (dateChange)='picker2_changed($event)'>
-        <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
-        <mat-datepicker #picker2></mat-datepicker>
-      
-      </mat-form-field>
- 
-    </div>
-
-
-    
-    Choose Rental(s):
+         </div>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <label>
+          Choose Rental(s):
+        </label>
+      </td>
+      <td>
     <mat-selection-list name='selected_rentals' [(ngModel)]="rental_ids">
         <mat-list-option *ngFor="let rental of rentals;" [value]="rental.id">
             {{rental.id}}  {{ rental.receive_date}}  {{rental.return_date}}   $ {{ rental.rental_rate}}
         </mat-list-option>
     </mat-selection-list>
-    
-    
-     <button class="btn btn-primary" [disabled]="jobForm.form.invalid" type="submit">Submit Job</button> 
+      </td>
+    </tr>
       <!-- <button mat-flat-button color="accent">Submit form</button> -->
-     </form>
+  </table>    
+  <button class="btn btn-primary" [disabled]="jobForm.form.invalid" type="submit">Submit Job</button> 
+
+</form>

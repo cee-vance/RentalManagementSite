@@ -26,7 +26,7 @@ const routes: Routes = [
   canActivateChild:[AdminAuthGuard],
   // must be admin
   children: [
-      {path:'Add', component: VendorAddComponent, outlet:'lower'},
+      {path:'Add', component: VendorAddComponent},
       {path:'VendorEdit/:id',component:VendorEditComponent}
   ]},
   // logged in is ok
@@ -34,7 +34,7 @@ const routes: Routes = [
   canActivateChild:[AdminAuthGuard],
     // must be admin
     children:[ 
-      {path:'Add', component: RentalAddComponent, outlet:'lower'},
+      {path:'Add', component: RentalAddComponent},
       {path:'RentalEdit/:id',component:RentalEditComponent}
     ]},
      // logged in is ok
@@ -49,15 +49,14 @@ const routes: Routes = [
       {path:'Invoice', component:InvoiceListComponent, canActivate:[AuthGuard],
       canActivateChild:[AdminAuthGuard],
         children: [
-          {path:'Add', component:InvoiceAddComponent, outlet:'lower'},
+          {path:'Add', component:InvoiceAddComponent},
           {path:'InvoiceEdit/:id',component:InvoiceEditComponent}
 
-   //   {path:'Edit/:id', outlet:'lower'}
     ]},
       { path:'Job', component: JobListComponent, canActivate:[AuthGuard],
       canActivateChild:[AdminAuthGuard],
       children:[
-        {path:'Add',component:JobAddComponent,outlet:'lower'},
+        {path:'Add',component:JobAddComponent},
         {path:'JobEdit/:id',component:JobEditComponent}
       ]}
 

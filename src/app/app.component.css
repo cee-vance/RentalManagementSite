@@ -1,11 +1,10 @@
-mat-sidenav-container{
-    height: 80%;
-}
-mat-sidenav, mat-sidenav-content{
-    padding:16px;
-}
 
-mat-sidenav{
-    width:10%;
-    background-color: rgb(184, 187, 187);
+label{
+    font-family: American Typewriter, serif;
+    font-size: 20px;
+}
+h1{
+    font-family: American Typewriter, serif;
+    font-size: 20px; 
+    margin: auto;
 }

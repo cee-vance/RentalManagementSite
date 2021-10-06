@@ -1,6 +1,6 @@
 
-<mat-toolbar style='background-color:cornflowerblue;color:whitesmoke'>
-  <span><div style='float:left;'>Company Icon</div><div style='clear:left'>
+<mat-toolbar style='background-color:rgb(139, 88, 41);color:whitesmoke'>
+  <span><div style='float:left;'><h1>Summit works</h1></div><div style='clear:left'>
     <div *ngIf='auth_srvc.isLoggedIn' >
         <label>Logged in as: {{auth_srvc.username}}</label>
         <button (click)='doLogout()'>Logout</button>
@@ -12,11 +12,31 @@
   </div></span>
 </mat-toolbar>
 
-  <mat-tab-group color="primary" (selectedTabChange)='menu($event)'>
-    <mat-tab label="Settings">Settings </mat-tab>
-    <mat-tab label="Rental Management"> </mat-tab>
-    <mat-tab label="Vendors">Vendors</mat-tab>
-    <mat-tab label="Reports">Reports</mat-tab>
+  <mat-tab-group dynamicHeight (selectedTabChange)='menu($event)'>
+    <mat-tab>
+      <ng-template mat-tab-label>
+        <h1>Settings</h1>
+      </ng-template>
+    </mat-tab>
+
+    <mat-tab>
+      <ng-template mat-tab-label>
+        <h1>Rental Management</h1>
+      </ng-template>
+    </mat-tab>
+
+    <mat-tab>
+      <ng-template mat-tab-label>
+        <h1>Vendors</h1>
+      </ng-template>
+    </mat-tab>
+
+    <mat-tab>
+      <ng-template mat-tab-label>
+        <h1>Reports</h1>
+      </ng-template>
+    </mat-tab>
+
   </mat-tab-group>
  
 

@@ -1,28 +1,45 @@
 
 <h4>Edit Invoice</h4>
-<form #invoiceForm="ngForm" (ngSubmit)="onSubmit(invoiceForm)" novalidate>
- 
+<form  #invoiceForm="ngForm" (ngSubmit)="onSubmit(invoiceForm)" novalidate>
+  <table>
+    <tbody>
+      <tr>
+        <td>
+          <h2>Select Job For Invoice:</h2>
+        </td>
+        <td>
+          <mat-selection-list name='selected_job' [multiple]="false" [(ngModel)]="invoice.job"  >
+            <mat-list-option *ngFor="let job of jobs;" [value]="job.id">
+                {{job.id}}  {{ job.name}} {{job.rentals}}
+            </mat-list-option>
+          </mat-selection-list>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <label >Rental Period</label>
+        </td>
+        <td>
+          <input type="number" [(ngModel)]='invoice.rental_period'  id="rental_period" name="period" min="0" max="11">
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <label >Invoice Total</label>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <input  type="text" [(ngModel)]='invoice.invoice_amount' (keypress)="keyPressNumbers($event)" name='total' id='total'/>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <p>
+    <button id = "div1"class="btn btn-primary" type="submit">Edit</button> 
+  </p>
 
-      
-      <h2>Select Job For Invoice:</h2>
-    <mat-selection-list name='selected_job' [multiple]="false" [(ngModel)]="invoice.job"  >
-        
-        <mat-list-option *ngFor="let job of jobs;" [value]="job.id">
-            {{job.id}}  {{ job.name}} {{job.rentals}}
-        </mat-list-option>
-    </mat-selection-list>
-    
-    <label >Rental Period</label>
-    <input type="number" [(ngModel)]='invoice.rental_period'  id="rental_period" name="period"
-         min="0" max="11">
-         <label >Invoice Total</label>
-         <input  type="text" [(ngModel)]='invoice.invoice_amount' (keypress)="keyPressNumbers($event)" name='total' id='total'/>
-         <button class="btn btn-primary" type="submit">Edit</button> 
-      <p>
-       
-      </p>
-
-    </form>
+</form>
     <form #delete="ngForm" (ngSubmit)="onDelete(delete)" novalidate>
       <div *ngIf="!invoice.id">Content to render when condition is true.>
 
@@ -35,5 +52,5 @@
             </div>
         </div>
         </div>
-        <button >Delete</button>
+        <button id = "div2">Delete</button>
     </form>

@@ -37,7 +37,7 @@ getId(){
       (error) => this.errorMsg = error
     )}
   }
-   async onSubmit(invoiceForm:any){
+    onSubmit(invoiceForm:any){
           let now = new Date();
           let now_str = now.toLocaleDateString('en-ca');
           this.invoice.job = +this.invoice.job[0];
@@ -50,9 +50,7 @@ getId(){
             (error) => this.errorMsg = error
           )
 
-         await this.delay(3000);
-
-         this.notify.emit(1);
+            this.router.navigate(['/Invoice']);
 
     }
 
@@ -77,7 +75,8 @@ onDelete(id:any){
   this.invoice_srvc.deleteInvoice(this.invoice.id).subscribe(
     (data)=> this.invoices = data,
     (error) => this.errorMsg = error);
-  window.location.reload();
+    this.router.navigate(['/Invoice']);
+
 };
 
 }

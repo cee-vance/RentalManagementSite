@@ -21,44 +21,31 @@ import { AdminAuthGuard } from './services/admin-auth.guard';
 
 const routes: Routes = [
    // logged in is ok
-  {path: '', component: LoginComponent},
-  {path:'Vendor',component: VendorListComponent, canActivate:[AuthGuard],
-  canActivateChild:[AdminAuthGuard],
-  // must be admin
-  children: [
-      {path:'Add', component: VendorAddComponent},
-      {path:'VendorEdit/:id',component:VendorEditComponent}
-  ]},
+    {path: '', component: LoginComponent},
+     {path:'Vendor',component: VendorListComponent, canActivate:[AuthGuard]},
+      {path:'VendorAdd', component: VendorAddComponent, canActivate:[AuthGuard, AdminAuthGuard]},
+      {path:'VendorEdit/:id',component:VendorEditComponent, canActivate:[AuthGuard, AdminAuthGuard]},
+
   // logged in is ok
-  { path:'Rental', component: RentalListComponent, canActivate:[AuthGuard],
-  canActivateChild:[AdminAuthGuard],
+   { path:'Rental', component: RentalListComponent, canActivate:[AuthGuard]},
     // must be admin
-    children:[ 
-      {path:'Add', component: RentalAddComponent},
-      {path:'RentalEdit/:id',component:RentalEditComponent}
-    ]},
+      {path:'RentalAdd', component: RentalAddComponent, canActivate:[AuthGuard, AdminAuthGuard]},
+      {path:'RentalEdit/:id',component:RentalEditComponent, canActivate:[AuthGuard, AdminAuthGuard]},
      // logged in is ok
-    { path:'Equipment',component: EquipmentListComponent, canActivate:[AuthGuard],
-    canActivateChild:[AdminAuthGuard],
-      children:[
-        {path:'Add',component:EquipmentAddComponent},
-        {path:'EquipmentEdit/:id', component: EquipmentEditComponent}
-      ]},
+    { path:'Equipment',component: EquipmentListComponent, canActivate:[AuthGuard]},
+    { path : 'EquipmentAdd', component: EquipmentAddComponent, canActivate:[AuthGuard, AdminAuthGuard]},
+    {path: 'EquipmentEdit/:id', component: EquipmentEditComponent, canActivate:[AuthGuard, AdminAuthGuard]},
+    
   
       // logged in is ok
-      {path:'Invoice', component:InvoiceListComponent, canActivate:[AuthGuard],
-      canActivateChild:[AdminAuthGuard],
-        children: [
-          {path:'Add', component:InvoiceAddComponent},
-          {path:'InvoiceEdit/:id',component:InvoiceEditComponent}
+      {path:'Invoice', component:InvoiceListComponent, canActivate:[AuthGuard]},
+      {path:'InvoiceAdd', component:InvoiceAddComponent, canActivate:[AuthGuard, AdminAuthGuard]},
+      {path:'InvoiceEdit/:id',component:InvoiceEditComponent, canActivate:[AuthGuard, AdminAuthGuard]},
 
-    ]},
-      { path:'Job', component: JobListComponent, canActivate:[AuthGuard],
-      canActivateChild:[AdminAuthGuard],
-      children:[
-        {path:'Add',component:JobAddComponent},
-        {path:'JobEdit/:id',component:JobEditComponent}
-      ]}
+      { path:'Job', component: JobListComponent, canActivate:[AuthGuard]},
+        {path:'JobAdd',component:JobAddComponent, canActivate:[AuthGuard, AdminAuthGuard]},
+        {path:'JobEdit/:id',component:JobEditComponent, canActivate:[AuthGuard, AdminAuthGuard]}
+      
 
 ];
 

@@ -3,6 +3,7 @@ import { JobService } from 'src/app/services/job.service';
 import { FormsModule } from '@angular/forms';
 import { Job } from 'src/app/models/job';
 import { RentalService } from 'src/app/services/rental.service';
+import { Router } from '@angular/router';
 
 
 
@@ -30,7 +31,7 @@ export class JobAddComponent implements OnInit {
   picker1:any;
   picker2:any;
   @Output() notify: EventEmitter<number> = new EventEmitter();
-  constructor(private job_srvc: JobService,private rental_srvc: RentalService) { }
+  constructor(private job_srvc: JobService,private rental_srvc: RentalService, private router: Router) { }
 
   ngOnInit(): void {
     this.rental_srvc.getRentals().subscribe(
@@ -72,10 +73,9 @@ export class JobAddComponent implements OnInit {
           },
       (error) => this.errorMsg = error
     )
-    await   this.delay(3000);
-    this.notify.emit(1);
-    if(this.errorMsg)
-          console.log(this.errorMsg);
+          
+    await this.delay(3000);
+    this.router.navigate(['/Job']);
   } 
 
   

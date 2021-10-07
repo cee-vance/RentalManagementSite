@@ -23,7 +23,7 @@ export class EquipmentAddComponent implements OnInit {
     errorMsg: any;
     equipments:any;
     @Output() notify: EventEmitter<number> = new EventEmitter();
-  constructor(private equipment_srvc: EquipmentService) { }
+  constructor(private equipment_srvc: EquipmentService, private router: Router) { }
   
 
   ngOnInit(): void {
@@ -44,7 +44,7 @@ export class EquipmentAddComponent implements OnInit {
     this.notify.emit(1);
 
   //  this.equipment = new Equipment();
-   
+      this.router.navigate(['/Equipment']);
 
   } 
 

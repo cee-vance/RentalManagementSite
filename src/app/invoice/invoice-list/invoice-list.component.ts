@@ -35,7 +35,7 @@ export class InvoiceListComponent implements OnInit {
   showEdit(id:number){
     console.log('id:' + id);
     this.router.navigateByUrl('', {skipLocationChange:true}).then(() => {
-    this.router.navigate(['Invoice/InvoiceEdit/', id] );
+    this.router.navigate(['InvoiceEdit/', id] );
       });
 
   } 

@@ -38,7 +38,7 @@ export class VendorListComponent implements OnInit {
 
 
       this.router.navigateByUrl('', {skipLocationChange:true}).then(() => {
-      this.router.navigate(['Vendor/VendorEdit/', id] );
+      this.router.navigate(['VendorEdit/', id] );
         });
 
     } 

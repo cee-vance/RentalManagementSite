@@ -34,14 +34,14 @@ export class VendorEditComponent implements OnInit {
       this.vendor.address = '';
       this.vendor.email = '';
       //this.notify.emit(1);
-      window.location.reload();
+      this.router.navigate(['/Vendor']);
   }
   onDelete(id:any){
     console.log('id' + this.vendor.id);
     this.vendor_srvc.deleteVendor(this.vendor.id).subscribe(
       (data)=> this.vendors = data,
       (error) => this.errorMsg = error);
-    window.location.reload();
+   this.router.navigate(['/Vendor']);
   };
 
 }

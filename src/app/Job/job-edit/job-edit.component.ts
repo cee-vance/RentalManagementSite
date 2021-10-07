@@ -18,7 +18,7 @@ export class JobEditComponent implements OnInit {
   picker1:any;
   picker2:any;
 
-  constructor(private job_srvc: JobService,private rental_srvc: RentalService,private activeRoute: ActivatedRoute,private route:Router) { }
+  constructor(private job_srvc: JobService,private rental_srvc: RentalService,private activeRoute: ActivatedRoute,private route:Router, private router:Router) { }
 
   ngOnInit(): void {
     this.rental_srvc.getRentals().subscribe(
@@ -50,7 +50,7 @@ export class JobEditComponent implements OnInit {
     this.job.needed_to = d.toLocaleDateString('en-ca');
   }
 
- async onSubmit(jobForm:any){
+  onSubmit(jobForm:any){
       this.job.rentals = this.rental_ids;
 
     
@@ -65,9 +65,8 @@ export class JobEditComponent implements OnInit {
           },
       (error) => this.errorMsg = error
     )
-    await   this.delay(3000);
-    if(this.errorMsg)
-          console.log(this.errorMsg);
+   
+    this.router.navigate(['/Job']);
   } 
 
   
@@ -80,7 +79,7 @@ onDelete(id:any){
   this.job_srvc.deleteJob(this.job.id).subscribe(
     (data)=> this.jobs = data,
     (error) => this.errorMsg = error);
-  window.location.reload();
+    this.router.navigate(['/Job']);
 };
 
 

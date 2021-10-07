@@ -34,7 +34,7 @@ export class RentalListComponent implements OnInit {
   showEdit(id:number){
     console.log('id:' + id);
     this.router.navigateByUrl('', {skipLocationChange:true}).then(() => {
-    this.router.navigate(['Rental/RentalEdit/', id] );
+    this.router.navigate(['RentalEdit/', id] );
       });
 
   } 

@@ -5,6 +5,7 @@ import { InvoiceService } from 'src/app/services/invoice.service';
 import { JobService } from 'src/app/services/job.service';
 import { RentalService } from 'src/app/services/rental.service';
 import { FormsModule } from '@angular/forms';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -27,7 +28,7 @@ export class InvoiceAddComponent implements OnInit {
     selected_job:any;
     invoices:any;
     @Output() notify: EventEmitter<number> = new EventEmitter();
-  constructor(private invoice_srvc: InvoiceService, private job_srvc: JobService, private rental_srvc: RentalService) { }
+  constructor(private invoice_srvc: InvoiceService, private job_srvc: JobService, private rental_srvc: RentalService, private router: Router) { }
 
   ngOnInit(): void {
     this.job_srvc.getJobs().subscribe(
@@ -38,7 +39,7 @@ export class InvoiceAddComponent implements OnInit {
 
 
 
-     async onSubmit(invoiceForm:any){
+      onSubmit(invoiceForm:any){
           
 
             
@@ -56,9 +57,7 @@ export class InvoiceAddComponent implements OnInit {
 
             )
 
-           await this.delay(3000);
-
-           this.notify.emit(1);
+              this.router.navigate(['/Invoice']);
 
       }
 

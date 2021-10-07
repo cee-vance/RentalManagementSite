@@ -35,7 +35,7 @@ export class JobListComponent implements OnInit {
     console.log('id:' + id);
     console.log('finished pass id:' + id);
     this.router.navigateByUrl('', {skipLocationChange:true}).then(() => {
-    this.router.navigate(['Job/JobEdit/', id] );
+    this.router.navigate(['JobEdit/', id] );
       });
 
   } 

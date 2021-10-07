@@ -47,14 +47,14 @@ export class EquipmentListComponent implements OnInit {
       console.log(this.url_);
       
       //this.router.navigateByUrl(this.url_);
-
-      //this.router.navigate(['Equipment/EquipmentEdit/', id] );
       console.log('finished pass id:' + id);
+      this.router.navigate(['EquipmentEdit/', id] );
+    
 
 
-      this.router.navigateByUrl('', {skipLocationChange:true}).then(() => {
-      this.router.navigate(['Equipment/EquipmentEdit/', id] );
-        });
+    //  this.router.navigateByUrl('', {skipLocationChange:true}).then(() => {
+     // this.router.navigate(['Equipment/EquipmentEdit/', id] );  }  );
+    
 
     } 
 

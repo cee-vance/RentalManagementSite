@@ -1,5 +1,5 @@
 <h4>Equipment</h4>
-<button [routerLink]="'/Equipment/Add'"> Add</button>
+<button [routerLink]="'/EquipmentAdd'"> Add</button>
 
 <table mat-table [dataSource]="equipments" class="mat-elevation-z8" style='width:100%'>
   <tbody>
@@ -47,5 +47,5 @@
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
     </tbody>
   </table>
-  <router-outlet></router-outlet>
+ <!-- <router-outlet></router-outlet> -->
 <!--<app-equipment-add (notify)='updateList($event)'></app-equipment-add> -->

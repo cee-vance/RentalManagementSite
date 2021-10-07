@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthServiceService } from 'src/app/services/auth-service.service';
 import { RentalService } from 'src/app/services/rental.service';
 
 @Component({
@@ -13,7 +14,7 @@ export class RentalListComponent implements OnInit {
   RentalListComponent uses RentalService to get a list
   of all the rentals and displays them in a table
   */
-  constructor(private rental_srvc: RentalService,private router: Router) { }
+  constructor(private rental_srvc: RentalService,private router: Router,public auth_srvc: AuthServiceService) { }
   rentals: any;
   errorMsg: any;
   displayedColumns: string[] = ['id', 'equipment_id', 'vendor_id', 'receive_time', 'return_time', 'rental_rate', 'buy_rent','edit'];

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthServiceService } from 'src/app/services/auth-service.service';
 import { InvoiceService } from 'src/app/services/invoice.service';
 
 @Component({
@@ -13,7 +14,7 @@ export class InvoiceListComponent implements OnInit {
     This component uses the InvoiceService to get
     all the Invoices and display then in a tabular fashion
   */
-  constructor(private invoice_srvc: InvoiceService, private router:Router) { }
+  constructor(private invoice_srvc: InvoiceService, private router:Router,public auth_srvc: AuthServiceService) { }
   invoices: any;
   errorMsg: any;
 

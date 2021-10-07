@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthServiceService } from 'src/app/services/auth-service.service';
 import { EquipmentService } from 'src/app/services/equipment.service';
 
 @Component({
@@ -8,17 +9,17 @@ import { EquipmentService } from 'src/app/services/equipment.service';
   styleUrls: ['./equipment-list.component.css']
 })
 export class EquipmentListComponent implements OnInit {
-
   /*
     This component uses the EquipmentService to get
     all the Invoices and display then in a tabular fashion
   */
-    constructor(private equipment_srvc: EquipmentService, private router: Router) { }
+    constructor(private equipment_srvc: EquipmentService, private router: Router,public auth_srvc: AuthServiceService) { }
     equipments: any;
     errorMsg: any;
     url_:any;
+    
     displayedColumns: string[] = ['id', 'category', 'make', 'model', 'serial_no', 'edit'];
-   
+
     ngOnInit(): void {  
       this.equipment_srvc.getEquipment().subscribe(
         (data) => this.equipments = data,

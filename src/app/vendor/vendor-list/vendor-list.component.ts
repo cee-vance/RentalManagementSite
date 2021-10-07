@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthServiceService } from 'src/app/services/auth-service.service';
 import { VendorService } from 'src/app/services/vendor.service';
 
 @Component({
@@ -13,7 +14,7 @@ export class VendorListComponent implements OnInit {
     This component uses the VendorService to get
     all the vendors and display then in a tabular fashion
   */
-    constructor(private vendor_srvc: VendorService, private router: Router) { }
+    constructor(private vendor_srvc: VendorService, private router: Router,public auth_srvc: AuthServiceService) { }
     vendors: any;
     errorMsg: any;
   

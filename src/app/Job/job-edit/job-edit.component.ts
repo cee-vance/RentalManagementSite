@@ -85,6 +85,9 @@ onDelete(id:any){
   this.job_srvc.deleteJob(this.job.id).subscribe(
     (data)=> this.jobs = data,
     (error) => this.errorMsg = error);
+    this.router.navigateByUrl('', {skipLocationChange:true}).then(() => {
+      this.router.navigate(['Job/'] );
+      });
   //window.location.reload();
 };
 

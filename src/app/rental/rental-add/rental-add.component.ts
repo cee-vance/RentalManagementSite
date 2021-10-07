@@ -1,4 +1,5 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Router } from '@angular/router';
 
 import { Rental } from 'src/app/models/rental';
 import { EquipmentService } from 'src/app/services/equipment.service';
@@ -25,7 +26,7 @@ export class RentalAddComponent implements OnInit {
   errorMsg:any = '';
   equipment_ids:number[] = [];
   @Output() notify: EventEmitter<number> = new EventEmitter();
-  constructor(private rental_srvc: RentalService, private equipment_srvc:EquipmentService, private vendor_srvc: VendorService) { }
+  constructor(private rental_srvc: RentalService, private equipment_srvc:EquipmentService, private vendor_srvc: VendorService, private router: Router) { }
 
   ngOnInit(): void {
     this.equipment_srvc.getEquipment().subscribe(
@@ -86,6 +87,8 @@ export class RentalAddComponent implements OnInit {
             this.notify.emit(1)
           else
             console.log('There was an error adding Rental')
+
+            this.router.navigate(['/Rental']);
 
       }
 

@@ -36,13 +36,18 @@ export class EquipmentEditComponent implements OnInit {
      (data)=> this.equipments = data,
      (error) => this.errorMsg = error
    );
-  }
+   this.router.navigateByUrl('', {skipLocationChange:true}).then(() => {
+    this.router.navigate(['Equipment/'] );
+      });  }
   onDelete(id:any){
     console.log('id' + this.equipment.id);
     this.equipment_srvc.deleteEquipment(this.equipment.id).subscribe(
       (data)=> this.equipments = data,
       (error) => this.errorMsg = error);
-    window.location.reload();
+      this.router.navigateByUrl('', {skipLocationChange:true}).then(() => {
+        this.router.navigate(['Equipment/'] );
+          });
+    //window.location.reload();
   };
 
 }

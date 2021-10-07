@@ -1,4 +1,5 @@
 import { Component, OnInit,EventEmitter, Output } from '@angular/core';
+import { Router } from '@angular/router';
 import { Vendor } from 'src/app/models/vendor';
 import { VendorService } from 'src/app/services/vendor.service';
 
@@ -24,7 +25,7 @@ export class VendorAddComponent implements OnInit {
   errorMsg:any;
   vendors:any;
   @Output() notify: EventEmitter<number> = new EventEmitter();
-  constructor(private vendor_srvc: VendorService) { }
+  constructor(private vendor_srvc: VendorService, private router:Router) { }
 
   ngOnInit(): void {
   }
@@ -37,9 +38,11 @@ export class VendorAddComponent implements OnInit {
       this.vendor.sales_person = '';
       this.vendor.address = '';
       this.vendor.email = '';
-
+      this.router.navigateByUrl('', {skipLocationChange:true}).then(() => {
+        this.router.navigate(['Vendor/'] );
+          });
       this.notify.emit(1);
-      window.location.reload();
+      //window.location.reload();
   }
 
 }

@@ -33,15 +33,21 @@ export class VendorEditComponent implements OnInit {
       this.vendor.sales_person = '';
       this.vendor.address = '';
       this.vendor.email = '';
+      this.router.navigateByUrl('', {skipLocationChange:true}).then(() => {
+        this.router.navigate(['Vendor/'] );
+          });
       //this.notify.emit(1);
-      window.location.reload();
+      //window.location.reload();
   }
   onDelete(id:any){
     console.log('id' + this.vendor.id);
     this.vendor_srvc.deleteVendor(this.vendor.id).subscribe(
       (data)=> this.vendors = data,
       (error) => this.errorMsg = error);
-    window.location.reload();
+      this.router.navigateByUrl('', {skipLocationChange:true}).then(() => {
+        this.router.navigate(['Vendor/'] );
+          });
+    //window.location.reload();
   };
 
 }

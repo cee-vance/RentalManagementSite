@@ -23,14 +23,14 @@ export class EquipmentAddComponent implements OnInit {
     errorMsg: any;
     equipments:any;
     @Output() notify: EventEmitter<number> = new EventEmitter();
-  constructor(private equipment_srvc: EquipmentService) { }
+  constructor(private equipment_srvc: EquipmentService,private router:Router) { }
   
 
   ngOnInit(): void {
 
   }
 
-  async onSubmit(equipmentAddForm:any){
+  onSubmit(equipmentAddForm:any){
     // Submits the Equipment
      console.log('category' + this.equipment.category);
      console.log('make:' + this.equipment.make);
@@ -40,8 +40,8 @@ export class EquipmentAddComponent implements OnInit {
       (data)=> this.equipment = data,
       (error) => this.errorMsg = error
     );
-    await this.delay(3000);
     this.notify.emit(1);
+    this.router.navigate(["/Equipment"])
 
   //  this.equipment = new Equipment();
    

@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { JobService } from 'src/app/services/job.service';
+import { FormsModule } from '@angular/forms';
 import { Job } from 'src/app/models/job';
 import { RentalService } from 'src/app/services/rental.service';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -10,15 +11,16 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./job-edit.component.css']
 })
 export class JobEditComponent implements OnInit {
-  job:Job = new Job();
+  job:any;
   jobs:any;
+  
   errorMsg:any;
   rentals: any;
   rental_ids:number[] = []
   picker1:any;
   picker2:any;
-
-  constructor(private job_srvc: JobService,private rental_srvc: RentalService,private activeRoute: ActivatedRoute,private route:Router) { }
+@Output() notify: EventEmitter<number> = new EventEmitter();
+  constructor(private job_srvc: JobService,private rental_srvc: RentalService,private activeRoute: ActivatedRoute,private router:Router) { }
 
   ngOnInit(): void {
     this.rental_srvc.getRentals().subscribe(
@@ -32,7 +34,7 @@ export class JobEditComponent implements OnInit {
   getId(){
     if(this.activeRoute.snapshot.params['id']){
       this.job_srvc.getJobById( this.activeRoute.snapshot.params['id']).subscribe(
-        (data) => this.job.id = data,
+        (data) => this.job = data,
         (error) => this.errorMsg = error
       )}
     }
@@ -65,9 +67,12 @@ export class JobEditComponent implements OnInit {
           },
       (error) => this.errorMsg = error
     )
-    await   this.delay(3000);
+    this.notify.emit(1);
     if(this.errorMsg)
           console.log(this.errorMsg);
+    this.router.navigateByUrl('', {skipLocationChange:true}).then(() => {
+      this.router.navigate(['Job/'] );
+      });
   } 
 
   
@@ -80,7 +85,7 @@ onDelete(id:any){
   this.job_srvc.deleteJob(this.job.id).subscribe(
     (data)=> this.jobs = data,
     (error) => this.errorMsg = error);
-  window.location.reload();
+  //window.location.reload();
 };
 
 

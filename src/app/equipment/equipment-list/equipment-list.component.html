@@ -47,5 +47,5 @@
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
     </tbody>
   </table>
-  <router-outlet></router-outlet>
+  <router-outlet (activate)="updateList($event)" (deactivate)="updateList($event)"></router-outlet>
 <!--<app-equipment-add (notify)='updateList($event)'></app-equipment-add> -->

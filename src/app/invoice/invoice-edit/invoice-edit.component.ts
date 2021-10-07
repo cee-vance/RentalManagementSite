@@ -49,10 +49,9 @@ getId(){
             (data) => this.invoices = data,
             (error) => this.errorMsg = error
           )
-
-         await this.delay(3000);
-
-         this.notify.emit(1);
+          this.router.navigateByUrl('', {skipLocationChange:true}).then(() => {
+            this.router.navigate(['Invoice/'] );
+              });
 
     }
 
@@ -77,7 +76,10 @@ onDelete(id:any){
   this.invoice_srvc.deleteInvoice(this.invoice.id).subscribe(
     (data)=> this.invoices = data,
     (error) => this.errorMsg = error);
-  window.location.reload();
+  //window.location.reload();
+  this.router.navigateByUrl('', {skipLocationChange:true}).then(() => {
+    this.router.navigate(['Invoice/'] );
+      });
 };
 
 }

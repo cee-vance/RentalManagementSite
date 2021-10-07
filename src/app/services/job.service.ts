@@ -44,7 +44,7 @@ export class JobService {
     // Needs Authorization ( Admins only)
     // Needs Authentication ( Logged in Admins)
     updateJob(id:number, job:Job):Observable<Job>{
-      return this.http.put<Job>(this._url_single + id +'/', job).pipe(catchError(HttpErrorHandler.errorHandler));
+      return this.http.put<Job>(this._url_single +'update/'+ id +'/', job).pipe(catchError(HttpErrorHandler.errorHandler));
     }
 
     // Delete job with id

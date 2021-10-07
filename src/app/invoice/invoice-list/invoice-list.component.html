@@ -44,7 +44,7 @@
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
   </table>
 
-  <router-outlet></router-outlet>
+  <router-outlet (activate)="updateList($event)" (deactivate)="updateList($event)"></router-outlet>
 
 <!--  <app-invoice-add (notify)='updateList($event)'></app-invoice-add>-->
 

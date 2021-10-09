@@ -1,4 +1,4 @@
-import { HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from '@angular/common/http';
+import { HttpEvent, HttpHandler, HttpHeaders, HttpInterceptor, HttpRequest } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { AuthServiceService } from './auth-service.service';
@@ -18,7 +18,18 @@ export class AuthInterceptorService implements HttpInterceptor {
       }else{
        return next.handle(req);
       }   */
+
       console.log(req.url);
-      return  next.handle(req);
+      if( this.auth_srvc.isLoggedIn){
+      let hdrs = new HttpHeaders().set('Authorization', 'Bearer ' + localStorage.getItem('access'));
+
+      hdrs.set('Content-Type',' application/json');
+        const cloned = req.clone({ headers:hdrs});
+        return next.handle(cloned);
+      }else{
+        return next.handle(req);
+      }
+     
+     
   }
 }

@@ -22,7 +22,7 @@ export class LoginComponent implements OnInit {
 
     //console.log(this.username);
     // console.log(this.password);
-    if(this.auth_srvc.checkCreds(this.username, this.password) == false){
+    if(this.auth_srvc.login(this.username, this.password) == false){
       this.result == 'No user/password found';
     }
     
@@ -33,7 +33,7 @@ export class LoginComponent implements OnInit {
         this.router.navigate(['/Rental']);
     }   else{
         this.result = 'not authorized';
-    }
+    }     
 
     // console.log('Not implemented yet');
   }

@@ -12,7 +12,8 @@ export class LoginComponent implements OnInit {
    username:string = '';
    password:string = '';
   creds:any;
-  result: string = ''
+  result: any = ''
+
   constructor(private auth_srvc: AuthServiceService, private router: Router) { }
 
   ngOnInit(): void {
@@ -25,7 +26,7 @@ export class LoginComponent implements OnInit {
     if(this.auth_srvc.login(this.username, this.password) == false){
       this.result == 'No user/password found';
     }
-    
+
     
     // navigate away based on creds 
     if (this.auth_srvc.isLoggedIn == true){

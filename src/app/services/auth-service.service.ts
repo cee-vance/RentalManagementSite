@@ -73,7 +73,7 @@ export class AuthServiceService {
        //   console.log(this.errorMsg);
 
           
-            
+
           // if user is found
         // set logged in to true etc.
 
@@ -106,6 +106,8 @@ export class AuthServiceService {
         this.isLoggedIn = false;
         this.isAdmin = false;
         this.creds = null;
+        localStorage.removeItem('access');
+        localStorage.removeItem('refresh');
 
     }
 
